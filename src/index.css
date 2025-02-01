@@ -19,6 +19,9 @@
 }
 
 @theme {
-  --color-primary: #9b9bff;
-  --color-secondary: #e9e7fc;
+  --color-primary: #9B9BFF;
+  --color-secondary: #ffffff;
+  --color-third: #000000;
+  --font-primary: "PT Sans", sans-serif;
 }
+
