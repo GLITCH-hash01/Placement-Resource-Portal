@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -21,5 +21,7 @@
 @theme {
   --color-primary: #9B9BFF;
   --color-secondary: #ffffff;
-  --color-Third: #000000
+  --color-third: #000000;
+  --font-primary: "PT Sans", sans-serif;
 }
+
