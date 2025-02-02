@@ -22,8 +22,16 @@ export default function Signin() {
         <div
           className="w-100 h-130 py-16  bg-black rounded-xl z-10 relative"
           style={{ boxShadow: "5px 5px 0px 0px #9B9BFF" }}>
-          <img src={arrow} alt="" className=" absolute top-10 -right-12 w-20 h-20" />
-          <img src={arrow} alt="" className=" absolute bottom-10 -left-12 w-20 h-20" />
+          <img
+            src={arrow}
+            alt=""
+            className=" absolute top-10 -right-12 w-20 h-20"
+          />
+          <img
+            src={arrow}
+            alt=""
+            className=" absolute bottom-10 -left-12 w-20 h-20"
+          />
           <h2 className="text-3xl text-primary font-bold text-center mb-4 ">
             Login
           </h2>
@@ -66,13 +74,14 @@ export default function Signin() {
           <img src={rightimage} alt=" " className="w-[505px] h-auto " />
         </div>
       </div>
-       <div className="relative">
-              <div className="absolute bottom-0 bg-primary w-screen box-border size-12 flex justify-center items-center">
-               <div className="justify-items-center "> <img src={star2} className=""></img>
-               </div>
-              </div>
-      
-            </div>
+      <div className="relative">
+        <div className="absolute bottom-0 bg-primary w-screen box-border size-12 flex justify-center items-center">
+          <div className="justify-items-center ">
+            {" "}
+            <img src={star2} className=""></img>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
