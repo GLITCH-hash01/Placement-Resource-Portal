@@ -1,5 +1,6 @@
 import vector from "../../assets/vector main.png";
 import { FaArrowCircleRight } from "react-icons/fa";
+import star from "../../assets/starvector.png";
 export default function Hero() {
   return (
     <>
@@ -30,6 +31,13 @@ export default function Hero() {
           </button>
         </div>
         <img src={vector} className="size-130"></img>
+      </div>
+      <div className="relative">
+        <div className="absolute bottom-0 bg-third w-screen box-border size-15 ">
+         <div className="flex flex-row justify-center "> <img src={star} className="text-2xl"></img>
+         </div>
+        </div>
+
       </div>
     </>
   );
