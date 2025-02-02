@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -18,10 +18,14 @@
   }
 }
 
-@theme {
-  --color-primary: #9B9BFF;
-  --color-secondary: #ffffff;
-  --color-third: #000000;
-  --font-primary: "Open Sans", serif;
+@font-face {
+  font-family: "Product Sans, sans-serif";
+  src: url("./assets/fonts/ProductSans-Regular.ttf");
 }
 
+@theme {
+  --color-primary: #9b9bff;
+  --color-secondary: #ffffff;
+  --color-third: #000000;
+  --font-primary: "Product Sans", serif;
+}
