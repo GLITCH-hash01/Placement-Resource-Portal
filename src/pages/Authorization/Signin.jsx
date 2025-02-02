@@ -50,7 +50,7 @@ export default function Signin() {
             </p> */}
             <button
               type="submit"
-              className="bg-primary hover:bg-blue-600 px-4 border-2 border-black py-2 rounded-xl font-bold"
+              className="bg-primary hover:bg-secondary px-4 border-2 border-black py-2 rounded-xl font-bold"
               style={{ boxShadow: "0px 2px 0px 0px #9B9BFF " }}>
               Sign in
             </button>
