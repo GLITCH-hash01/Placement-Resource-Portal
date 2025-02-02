@@ -10,8 +10,8 @@ export default function LandingPage() {
       <Navbar />
       <Hero />
       <Services />
-      <Happen/>
-      <Footer/>
+      <Happen />
+      <Footer />
     </>
   );
 }
