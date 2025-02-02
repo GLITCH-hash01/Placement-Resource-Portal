@@ -33,7 +33,7 @@ export default function Hero() {
         <img src={vector} className="size-130"></img>
       </div>
       <div className="relative">
-        <div className="absolute bottom-0 bg-third w-screen box-border size-15 ">
+        <div className="absolute bottom-0 bg-third w-screen box-border size-15 flex justify-center items-center">
          <div className="flex flex-row justify-center "> <img src={star} className="text-2xl"></img>
          </div>
         </div>
