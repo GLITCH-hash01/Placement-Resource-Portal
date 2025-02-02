@@ -8,7 +8,7 @@ export default function Signin() {
       <div className="w-screen h-fit flex fixed justify-around items-center gap-200 p-4">
         <img src={logo} alt="" className="w-12 h-12" />
         <button
-          className="bg-primary px-8 border-2 rounded-xl  border-black py-2 cursor-pointer font-primary font-bold"
+          className="bg-primary px-8 border-2 rounded-xl border-black py-2 cursor-pointer font-primary font-bold"
           style={{ boxShadow: "0px 4px 0px 0px #000" }}>
           Sign up
         </button>
