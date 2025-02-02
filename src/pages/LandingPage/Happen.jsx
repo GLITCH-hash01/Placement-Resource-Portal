@@ -6,8 +6,8 @@ export default function Happen() {
     <>
       <div className="flex flex-col justify-center items-center w-screen h-screen gap-30 pl-3">
         <div className="bg-four p-10 rounded-lg shadow-lg w-300 h-90 mt-0.5 ">
-          <h2 className="text-3xl font-primary font-bold mb-4 pl-8">Let's make this Happen</h2>
-        <div className="relative"><img src={thunder} alt="Thunder" className="w-10 h-10 mt-4  absolute -top-15 left-85" />
+          <h2 className="text-3xl font-primary font-bold mb-4 pl-8">Let's make this happen</h2>
+        <div className="relative"><img src={thunder} alt="Thunder" className="w-10 h-10 mt-4  absolute -top-15 left-84" />
         </div>
           <div className="mt-8 relative pl-8">
             <p className="text-third text-left w-150 h-fit flex flex-col font-primary font-light t mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
