@@ -1,12 +1,13 @@
 import logo from "../../assets/PRPLogo.png";
 import rightimage from "../../assets/vector right.png";
 import leftimage from "../../assets/vector left.png";
-import arrow from "../../assets/arrow.png"
+import arrow from "../../assets/arrow.png";
+import star2 from "../../assets/star.png";
 export default function Signin() {
   return (
     <>
-      <div className="w-screen h-fit flex fixed justify-around items-center gap-200 p-4">
-        <img src={logo} alt="" className="w-12 h-12" />
+      <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4">
+        <img src={logo} alt="" className="w-15 h-15" />
         <button
           className="bg-primary px-8 border-2 rounded-xl  border-black py-2 font-primary font-bold cursor-pointer"
           style={{ boxShadow: "0px 4px 0px 0px #000" }}>

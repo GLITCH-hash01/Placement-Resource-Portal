@@ -1,4 +1,6 @@
 import Logo from "../assets/PRPLogo.png";
+import Button from "./Button";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function Navbar() {
   return (
@@ -9,11 +11,19 @@ export default function Navbar() {
           <a href="" className="px-3 bg-primary">
             Home
           </a>
-          <a href="" className="px-3 ">About</a>
-          <a href="" className="px-3">Services</a>
-          <a href="" className="px-3">Contact Us</a>
+          <a href="" className="px-3 ">
+            About
+          </a>
+          <a href="" className="px-3">
+            Services
+          </a>
+          <a href="" className="px-3">
+            Contact Us
+          </a>
         </div>
-        <button className="bg-primary px-8 border-2 rounded-xl text-2xl font-primary font-bold border-black py-2 cursor-pointer " style={{boxShadow:"0px 4px 0px 0px #000"}}>Login</button>
+        <Button onClick={() => (window.location.href = "/login")}>
+          Log in
+        </Button>
       </nav>
     </>
   );
