@@ -14,7 +14,7 @@ export default function Services() {
         </h2>
         
           <div className="relative">
-            <img src={arrowserv1} alt=""  className="absolute -top-28 left-33 h-40 w-40"/>
+            <img src={arrowserv1} alt=""  className="absolute -top-30 left-33 h-45 w-45"/>
             </div>
 
           
