@@ -64,7 +64,7 @@ export default function Signin() {
             </button>
             <p className="text-sm text-center mt-4 text-white">
               Don't have an Account?{" "}
-              <a href="" className="text-blue-400 hover:text-gray-400 hover:underline">
+              <a href="" className="text-blue-400 hover:underline">
                 Register Now
               </a>
             </p>
