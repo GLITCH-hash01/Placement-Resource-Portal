@@ -1,14 +1,16 @@
 import Logo from "../assets/PRPLogo.png";
 import Button from "./Button";
-import { FaArrowCircleRight } from "react-icons/fa";
+import { useRef } from "react";
 
 export default function Navbar() {
+  const navlink1 = useRef();
+  console.log(navlink1.current.offsetWidth);
   return (
     <>
       <nav className="w-screen fixed h-fit flex justify-around items-center gap-10 z-10 p-4">
         <img src={Logo} alt="" className="w-15 h-15" />
         <div className="w-190 h-fit py-3 bg-white border-2 font-primary font-bold text-2xl border-black rounded-xl flex gap-5 items-center justify-center">
-          <a href="" className="px-3 bg-primary">
+          <a href="" ref={navlink1} className="px-3 bg-primary">
             Home
           </a>
           <a href="" className="px-3 ">
@@ -21,7 +23,7 @@ export default function Navbar() {
             Contact Us
           </a>
         </div>
-        <Button onClick={() => (window.location.href = "/login")} >
+        <Button onClick={() => (window.location.href = "/login")}>
           Log in
         </Button>
       </nav>

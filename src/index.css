@@ -30,3 +30,7 @@
   --color-four: #EAE9F6;
   --font-primary: "Product Sans", serif;
 }
+
+.heading-1{
+  @apply w-fit text-4xl bg-primary font-primary 
+}

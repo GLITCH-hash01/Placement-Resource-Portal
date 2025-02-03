@@ -4,8 +4,33 @@ import leftimage from "../../assets/vector left.png";
 import arrow from "../../assets/arrow.png";
 import star2 from "../../assets/star.png";
 import Button from "../../components/Button";
+import axios from "axios";
+import { useRef } from "react";
+import { toast } from "react-toastify";
 
 export default function Signin() {
+  const email = useRef();
+  const password = useRef();
+
+  function Login() {
+    event.preventDefault();
+    console.log(email.current.value, password.current.value);
+    axios
+      .post("/auth/login", {
+        email: email.current.value,
+        password: password.current.value,
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        localStorage.setItem("token", res.data.accesstoken);
+        localStorage.setItem("user", JSON.stringify(res.data.user));
+        setTimeout(() => (window.location.href = "/dashboard"), 2000);
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  }
+
   return (
     <>
       <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4 z-10">
@@ -38,8 +63,9 @@ export default function Signin() {
           <p className=" text-white px-10 pb-10 font-[400] text-lg text-center">
             Hey, Enter your details to Sign<br></br> into your account
           </p>
-          <form className=" flex flex-col gap-4 px-10">
+          <form className=" flex flex-col gap-4 px-10" onSubmit={Login}>
             <input
+              ref={email}
               type="email"
               id="email"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
@@ -47,6 +73,7 @@ export default function Signin() {
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
             <input
+              ref={password}
               type="password"
               id="password"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
@@ -64,7 +91,7 @@ export default function Signin() {
             </button>
             <p className="text-sm text-center mt-4 text-white">
               Don't have an Account?{" "}
-              <a href="" className="text-blue-400 hover:underline">
+              <a href="" className="text-primary hover:underline">
                 Register Now
               </a>
             </p>
@@ -75,7 +102,7 @@ export default function Signin() {
         </div>
       </div>
       <div className="relative">
-        <div className="absolute bottom-0 bg-primary w-screen box-border size-12 flex justify-center items-center">
+        <div className="absolute bottom-0 bg-primary  w-screen box-border size-12 flex justify-center items-center">
           <div className="justify-items-center ">
             {" "}
             <img src={star2} className=""></img>
