@@ -21,7 +21,7 @@ export default function Navbar() {
             Contact Us
           </a>
         </div>
-        <Button onClick={() => (window.location.href = "/login")}>
+        <Button onClick={() => (window.location.href = "/login")} >
           Log in
         </Button>
       </nav>
