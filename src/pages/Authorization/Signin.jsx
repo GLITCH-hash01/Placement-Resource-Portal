@@ -3,16 +3,16 @@ import rightimage from "../../assets/vector right.png";
 import leftimage from "../../assets/vector left.png";
 import arrow from "../../assets/arrow.png";
 import star2 from "../../assets/star.png";
+import Button from "../../components/Button";
+
 export default function Signin() {
   return (
     <>
-      <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4">
+      <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4 z-10">
         <img src={logo} alt="" className="w-15 h-15" />
-        <button
-          className="bg-primary px-8 border-2 rounded-xl  border-black py-2 font-primary font-bold cursor-pointer"
-          style={{ boxShadow: "0px 4px 0px 0px #000" }}>
+        <Button onClick={() => (window.location.href = "/login")}>
           Sign up
-        </button>
+        </Button>
       </div>
 
       <div className="flex justify-center items-center px-8 relative font-primary gap-8 h-screen ">
@@ -22,8 +22,16 @@ export default function Signin() {
         <div
           className="w-100 h-130 py-16  bg-black rounded-xl z-10 relative"
           style={{ boxShadow: "5px 5px 0px 0px #9B9BFF" }}>
-          <img src={arrow} alt="" className=" absolute top-10 -right-13 w-20 h-20" />
-          <img src={arrow} alt="" className="absolute bottom-10 -left-13 w-20 h-20 rotate-180"/>
+          <img
+            src={arrow}
+            alt=""
+            className=" absolute top-10 -right-13 w-20 h-20"
+          />
+          <img
+            src={arrow}
+            alt=""
+            className="absolute bottom-10 -left-13 w-20 h-20 rotate-180"
+          />
           <h2 className="text-3xl text-primary font-bold text-center mb-4 ">
             Login
           </h2>
@@ -64,6 +72,14 @@ export default function Signin() {
         </div>
         <div className="flex justify-around items-center absolute right-[10%] bottom-20">
           <img src={rightimage} alt=" " className="w-[400px] h-[400px] " />
+        </div>
+      </div>
+      <div className="relative">
+        <div className="absolute bottom-0 bg-primary w-screen box-border size-12 flex justify-center items-center">
+          <div className="justify-items-center ">
+            {" "}
+            <img src={star2} className=""></img>
+          </div>
         </div>
       </div>
     </>
