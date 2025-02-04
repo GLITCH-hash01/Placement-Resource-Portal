@@ -8,16 +8,16 @@ export default function Services() {
   return (
     <>
       <div className="p-10 px-20 flex flex-col gap-10 w-fit h-fit">
-        <h2 className=" bg-primary font-bold text-4xl flex w-fit  items-start justify-start ">
-          Services
-        </h2>
 
-        <div className="relative">
+        <div className="relative w-fit h-fit">
           <img
             src={arrowserv1}
             alt=""
-            className="absolute -top-30 left-33 h-45 w-45"
+            className="absolute -top-4 left-30 "
           />
+        <h2 className=" bg-primary font-bold text-4xl flex w-fit  items-start justify-start ">
+          Services
+        </h2>
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-5 py-10 px-20">

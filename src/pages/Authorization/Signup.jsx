@@ -1,14 +1,13 @@
-import logo from "../../assets/PRPLogo.png";
-import rightimage from "../../assets/images/vector right.png";
-import leftimage from "../../assets/images/vector left.png";
-import arrow from "../../assets/images/arrow.png";
-import star2 from "../../assets/images/star.png";
-import Button from "../../components/Button";
 import axios from "axios";
 import { useRef } from "react";
 import { toast } from "react-toastify";
-
-export default function Signin() {
+import Button from "../../components/Button";
+import logo from "../../assets/PRPLogo.png";
+import leftimage from "../../assets/images/vector left.png";
+import rightimage from "../../assets/images/signupvector.png";
+import arrow from "../../assets/images/arrow.png";
+import star2 from "../../assets/images/star.png";
+export default function Signup() {
   const email = useRef();
   const password = useRef();
 
@@ -29,13 +28,12 @@ export default function Signin() {
         toast.error(err.response.data.message);
       });
   }
-
   return (
     <>
       <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4 z-10">
         <img src={logo} alt="" className="w-15 h-15" />
-        <Button onClick={() => (window.location.href = "/signup")}>
-          Sign up
+        <Button onClick={() => (window.location.href = "/login")}>
+          Sign in
         </Button>
       </div>
 
@@ -44,7 +42,7 @@ export default function Signin() {
           <img src={leftimage} alt=" " className="w-[300px] h-auto" />
         </div>
         <div
-          className="w-100 h-130 py-16  bg-black rounded-xl z-10 relative"
+          className="w-100 h-150 py-16  bg-black rounded-xl z-10 relative"
           style={{ boxShadow: "5px 5px 0px 0px #9B9BFF" }}>
           <img
             src={arrow}
@@ -56,27 +54,54 @@ export default function Signin() {
             alt=""
             className="absolute bottom-10 -left-13 w-20 h-20 rotate-180"
           />
-          <h2 className="text-3xl text-primary font-bold text-center mb-4 ">
-            Login
+          <h2 className="text-4xl text-primary font-primary font-bold text-center mb-4 ">
+            Register
           </h2>
-          <p className=" text-white px-10 pb-10 font-[400] text-lg text-center">
-            Hey, Enter your details to Sign<br></br> into your account
+          <p className=" text-white px-10 pb-10 font-[400] text-xl text-center">
+            Hey, Enter your details to Register
           </p>
           <form className=" flex flex-col gap-4 px-10" onSubmit={Login}>
+          <input
+              ref={email}
+              type="text"
+              id="name"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
+              placeholder="Username"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            />
+            
             <input
               ref={email}
               type="email"
               id="email"
-              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Email Address"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
+           <select 
+            name="Department" id="Department" style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            className="w-80 h-10 px-4 rounded-3xl bg-white text-black text-md outline-0" >
+            <option value="CSE" placeholder="Department">Department</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="AIML">AIML</option>
+           
+           </select>
             <input
               ref={password}
               type="password"
               id="password"
-              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Password"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            />
+             <input
+              ref={password}
+              type="password"
+              id="password"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
+              placeholder="Confirm Password"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
             {/* <p className="text-sm text-left text-white">
@@ -86,18 +111,18 @@ export default function Signin() {
               type="submit"
               className="bg-primary  px-4 py-2 rounded-xl font-bold cursor-pointer"
               style={{ boxShadow: "0px 2px 0px 0px #ffffff " }}>
-              Sign in
+              Sign up
             </button>
-            <p className="text-sm text-center mt-4 text-white">
-              Don't have an Account?{" "}
-              <a href="/signup" className="text-primary hover:underline">
-                Register Now
+            <p className="text-lg text-center mt-4 font-primary text-white">
+              Already have an Account? {" "}
+              <a href="" className="text-primary hover:underline">
+                Sign in
               </a>
             </p>
           </form>
         </div>
-        <div className="flex justify-around items-center absolute right-[5%] bottom-20">
-          <img src={rightimage} alt=" " className="w-[480px] h-[480px] " />
+        <div className="flex justify-around items-center absolute right-[8%] bottom-35">
+          <img src={rightimage} alt=" " className="w-[380px] h-auto" />
         </div>
       </div>
       <div className="relative">

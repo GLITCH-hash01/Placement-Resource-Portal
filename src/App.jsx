@@ -5,6 +5,7 @@ import pattern from "./assets/images/Pattern.png";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";
+import Signup from "./pages/Authorization/Signup";
 
 function App() {
   axios.defaults.baseURL = "http://127.0.0.1:5000";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<Signin />} />
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path ="/signup" element={<Signup />} />
           </Routes>
         </BrowserRouter>
         <ToastContainer />
