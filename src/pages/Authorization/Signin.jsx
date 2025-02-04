@@ -1,8 +1,8 @@
 import logo from "../../assets/PRPLogo.png";
-import rightimage from "../../assets/vector right.png";
-import leftimage from "../../assets/vector left.png";
-import arrow from "../../assets/arrow.png";
-import star2 from "../../assets/star.png";
+import rightimage from "../../assets/images/vector right.png";
+import leftimage from "../../assets/images/vector left.png";
+import arrow from "../../assets/images/arrow.png";
+import star2 from "../../assets/images/star.png";
 import Button from "../../components/Button";
 import axios from "axios";
 import { useRef } from "react";
@@ -14,7 +14,6 @@ export default function Signin() {
 
   function Login() {
     event.preventDefault();
-    console.log(email.current.value, password.current.value);
     axios
       .post("/auth/login", {
         email: email.current.value,

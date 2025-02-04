@@ -1,5 +1,5 @@
-import thunder from "../../assets/thunder.png";
-import circle from "../../assets/circlestar.png";
+import thunder from "../../assets/images/thunder.png";
+import circle from "../../assets/images/circlestar.png";
 import { FaArrowCircleRight } from "react-icons/fa";
 export default function Happen() {
   return (

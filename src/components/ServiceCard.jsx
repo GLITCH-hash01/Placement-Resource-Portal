@@ -1,7 +1,4 @@
 import { FaArrowCircleRight } from "react-icons/fa";
-import maindash from "../assets/maindash.png";
-import roadmap from "../assets/roadmap.png";
-import arrowserv1 from "../assets/arrowserv1.png";
 
 
 export default function ServiceCard({title,img,color,text,colortext, text1}) {

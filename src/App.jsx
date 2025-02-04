@@ -1,7 +1,7 @@
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Signin from "./pages/Authorization/Signin";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import pattern from "./assets/Pattern.png";
+import pattern from "./assets/images/Pattern.png";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer } from "react-toastify";

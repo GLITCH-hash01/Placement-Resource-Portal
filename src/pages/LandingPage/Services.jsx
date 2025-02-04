@@ -1,6 +1,6 @@
-import maindash from "../../assets/maindash.png";
-import roadmap from "../../assets/roadmap.png";
-import arrowserv1 from "../../assets/arrowserv1.png";
+import maindash from "../../assets/images/maindash.png";
+import roadmap from "../../assets/images/roadmap.png";
+import arrowserv1 from "../../assets/images/arrowserv1.png";
 
 import ServiceCard from "../../components/ServiceCard";
 

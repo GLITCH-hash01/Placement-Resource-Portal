@@ -1,6 +1,6 @@
-import vector from "../../assets/vector main.png";
+import vector from "../../assets/images/vector main.png";
 import { FaArrowCircleRight } from "react-icons/fa";
-import star from "../../assets/starvector.png";
+import star from "../../assets/images/starvector.png";
 import Button from "../../components/Button";
 
 export default function Hero() {
