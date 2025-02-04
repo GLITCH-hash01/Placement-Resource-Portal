@@ -12,13 +12,13 @@ export default function Navbar() {
           <a href="" className="px-3 bg-primary">
             Home
           </a>
-          <a href="" className="px-3 ">
+          <a href="" className="px-3 hover:bg-primary transition-colors">
             About
           </a>
-          <a href="" className="px-3">
+          <a href="" className="px-3 hover:bg-primary transistion-colors">
             Services
           </a>
-          <a href="" className="px-3">
+          <a href="" className="px-3 hover:bg-primary transistion-colors">
             Contact Us
           </a>
         </div>

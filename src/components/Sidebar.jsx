@@ -46,13 +46,12 @@ export default function Sidebar({ active }) {
             <button
               key={index}
               className={
-                "flex size-10  rounded-full shadow-xl  items-center justify-center text-2xl hover:bg-primary cursor-pointer transi  " +
+                "flex size-10  rounded-full  items-center justify-center text-2xl hover:bg-primary cursor-pointer transition  " +
                 (active === item.name ? "bg-primary" : "bg-transparent")
               }>
               {item.icon}
             </button>
           ))}
-          {/* <button className="size-10 rounded-full bg-primary"></button> */}
         </div>
         <button
           className="flex size-10 bg-primary rounded-md cursor-pointer shadow-xl  items-center justify-center text-2xl"

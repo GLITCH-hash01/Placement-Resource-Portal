@@ -22,15 +22,7 @@ export default function Hero() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
-          {/* <button
-            className="bg-primary px-8 text-2xl border-2 rounded-2xl max-w-60 h-15 font-primary font-bold 
-        border-black py-2 cursor-pointer flex gap-2 items-center justify-center"
-            style={{ boxShadow: "0px 4px 0px    0px#000" }}>
-            Get Started
-            <span className="-rotate-45 text-2xl">
-              <FaArrowCircleRight />
-            </span>
-          </button> */}
+
           <Button
             icon={
               <span className="-rotate-45 text-2xl">

@@ -6,7 +6,7 @@ export default function Dashboard() {
         <Sidebar active={"Dashboard"}/>
         <div className="w-full h-full flex flex-col  gap-8">
           <h3 className="heading-1">Dashboard</h3>
-          <div className="w-full h-full text-white rounded-lg bg-primary flex justify-center items-center">
+          <div className="w-full h-full text-black rounded-lg bg-white  flex justify-center items-center">
               <p className="text-2xl">Data is not available yet</p>
           </div>
         </div>
