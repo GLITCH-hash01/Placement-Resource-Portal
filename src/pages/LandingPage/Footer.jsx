@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       <div className=" bg-black w-screen h-50">
-        <div className="px-14 py-14 flex justify-between gap-4">
+        <div className="px-18 py-14 flex justify-between gap-4">
           <img src={logo} alt="" className="w-13 h-13" />
           <div>
           <p className="text-white text-2xl px-50">Follow Us</p>
