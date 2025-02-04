@@ -1,5 +1,6 @@
 import logo from "../../assets/PRPLogo.png";
 import { FaRegCopyright } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
@@ -8,13 +9,15 @@ export default function Footer() {
           <img src={logo} alt="" className="w-13 h-13" />
           <div>
           <p className="text-white text-2xl px-50">Follow Us</p>
+          <div> 
+          <FaInstagram />
+          </div>
           </div>
         </div>
         <div className="bg-primary w-screen h-11 flex justify-around gap-4 items-center">
-          <div className="flex">
+          <div className="flex gap-1">
             <FaRegCopyright />
             <p className="text-xs font-primary ">
-              {" "}
               Copyright 2025 - All right reserved
             </p>
           </div>
