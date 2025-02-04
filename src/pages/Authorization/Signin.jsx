@@ -34,7 +34,7 @@ export default function Signin() {
     <>
       <div className="w-screen h-fit flex fixed justify-around items-center gap-250 p-4 z-10">
         <img src={logo} alt="" className="w-15 h-15" />
-        <Button onClick={() => (window.location.href = "/login")}>
+        <Button onClick={() => (window.location.href = "/signup")}>
           Sign up
         </Button>
       </div>

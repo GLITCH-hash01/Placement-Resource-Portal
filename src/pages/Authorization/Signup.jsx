@@ -42,7 +42,7 @@ export default function Signup() {
           <img src={leftimage} alt=" " className="w-[300px] h-auto" />
         </div>
         <div
-          className="w-100 h-130 py-16  bg-black rounded-xl z-10 relative"
+          className="w-100 h-150 py-16  bg-black rounded-xl z-10 relative"
           style={{ boxShadow: "5px 5px 0px 0px #9B9BFF" }}>
           <img
             src={arrow}
@@ -54,27 +54,54 @@ export default function Signup() {
             alt=""
             className="absolute bottom-10 -left-13 w-20 h-20 rotate-180"
           />
-          <h2 className="text-3xl text-primary font-bold text-center mb-4 ">
-            Login
+          <h2 className="text-4xl text-primary font-primary font-bold text-center mb-4 ">
+            Register
           </h2>
-          <p className=" text-white px-10 pb-10 font-[400] text-lg text-center">
+          <p className=" text-white px-10 pb-10 font-[400] text-xl text-center">
             Hey, Enter your details to Register
           </p>
           <form className=" flex flex-col gap-4 px-10" onSubmit={Login}>
+          <input
+              ref={email}
+              type="text"
+              id="name"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
+              placeholder="Username"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            />
+            
             <input
               ref={email}
               type="email"
               id="email"
-              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Email Address"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
+           <select 
+            name="Department" id="Department" style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            className="w-80 h-10 px-4 rounded-3xl bg-white text-black text-md outline-0" >
+            <option value="CSE" placeholder="Department">Department</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="AIML">AIML</option>
+           
+           </select>
             <input
               ref={password}
               type="password"
               id="password"
-              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-sm outline-0"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Password"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+            />
+             <input
+              ref={password}
+              type="password"
+              id="password"
+              className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
+              placeholder="Confirm Password"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
             {/* <p className="text-sm text-left text-white">
@@ -86,10 +113,10 @@ export default function Signup() {
               style={{ boxShadow: "0px 2px 0px 0px #ffffff " }}>
               Sign up
             </button>
-            <p className="text-sm text-center mt-4 text-white">
-              Already have an Account?{" "}
+            <p className="text-lg text-center mt-4 font-primary text-white">
+              Already have an Account? {" "}
               <a href="" className="text-primary hover:underline">
-                Sign in Now
+                Sign in
               </a>
             </p>
           </form>
