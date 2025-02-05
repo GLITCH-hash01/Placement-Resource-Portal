@@ -10,13 +10,30 @@ import star2 from "../../assets/images/star.png";
 export default function Signup() {
   const email = useRef();
   const password = useRef();
+  const department = useRef();
+  const username = useRef();
+  const confirmpass = useRef();
 
   function Login() {
     event.preventDefault();
+    console.log(
+      email.current.value,
+      password.current.value,
+      department.current.value,
+      username.current.value,
+      confirmpass.current.value
+    );
+    if (password.current.value !== confirmpass.current.value) {
+      toast.error("Password and Confirm Password should be same");
+      return;
+    }
     axios
-      .post("/auth/login", {
+      .post("/auth/signup", {
         email: email.current.value,
         password: password.current.value,
+        username: username.current.value,
+        department: department.current.value,
+        role: "student",
       })
       .then((res) => {
         toast.success(res.data.message);
@@ -61,15 +78,15 @@ export default function Signup() {
             Hey, Enter your details to Register
           </p>
           <form className=" flex flex-col gap-4 px-10" onSubmit={Login}>
-          <input
-              ref={email}
+            <input
+              ref={username}
               type="text"
               id="name"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Username"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
-            
+
             <input
               ref={email}
               type="email"
@@ -78,16 +95,20 @@ export default function Signup() {
               placeholder="Email Address"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
-           <select 
-            name="Department" id="Department" style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
-            className="w-80 h-10 px-4 rounded-3xl bg-white text-black text-md outline-0" >
-            <option value="CSE" placeholder="Department">Department</option>
-            <option value="CSE">CSE</option>
-            <option value="ECE">ECE</option>
-            <option value="EEE">EEE</option>
-            <option value="AIML">AIML</option>
-           
-           </select>
+            <select
+              ref={department}
+              name="Department"
+              id="Department"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
+              className="w-80 h-10 px-4 rounded-3xl bg-white text-black text-md outline-0">
+              <option value="CSE" placeholder="Department">
+                Department
+              </option>
+              <option value="CSE">CSE</option>
+              <option value="ECE">ECE</option>
+              <option value="EEE">EEE</option>
+              <option value="AIML">AIML</option>
+            </select>
             <input
               ref={password}
               type="password"
@@ -96,8 +117,8 @@ export default function Signup() {
               placeholder="Password"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
-             <input
-              ref={password}
+            <input
+              ref={confirmpass}
               type="password"
               id="password"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
@@ -114,7 +135,7 @@ export default function Signup() {
               Sign up
             </button>
             <p className="text-lg text-center mt-4 font-primary text-white">
-              Already have an Account? {" "}
+              Already have an Account?{" "}
               <a href="" className="text-primary hover:underline">
                 Sign in
               </a>

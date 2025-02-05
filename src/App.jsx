@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <div
-        className="w-full h-fit font-primary overflow-x-hidden"
+        className="w-full h-fit font-primary overflow-hidden"
         style={{ backgroundImage: `url(${pattern})` }}>
         <BrowserRouter>
           <Routes>

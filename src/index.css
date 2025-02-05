@@ -27,10 +27,10 @@
   --color-primary: #9b9bff;
   --color-secondary: #ffffff;
   --color-third: #000000;
-  --color-four: #EAE9F6;
+  --color-four: #eae9f6;
   --font-primary: "Product Sans", serif;
 }
 
-.heading-1{
-  @apply w-fit text-4xl bg-primary font-primary 
+.heading-1 {
+  @apply w-fit text-4xl bg-primary font-primary;
 }
