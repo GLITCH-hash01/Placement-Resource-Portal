@@ -101,9 +101,6 @@ export default function Signup() {
               id="Department"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
               className="w-80 h-10 px-4 rounded-3xl bg-white text-black text-md outline-0">
-              <option value="CSE" placeholder="Department">
-                Department
-              </option>
               <option value="CSE">CSE</option>
               <option value="ECE">ECE</option>
               <option value="EEE">EEE</option>
