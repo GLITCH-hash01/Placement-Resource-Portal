@@ -6,7 +6,7 @@ import logo from "../../assets/PRPLogo.png";
 import leftimage from "../../assets/images/vector left.png";
 import rightimage from "../../assets/images/signupvector.png";
 import arrow from "../../assets/images/arrow.png";
-import star2 from "../../assets/images/star.png";
+import star2 from "../../assets/images/star_banner.png";
 export default function Signup() {
   const email = useRef();
   const password = useRef();

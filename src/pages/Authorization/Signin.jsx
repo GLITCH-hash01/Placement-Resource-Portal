@@ -2,7 +2,7 @@ import logo from "../../assets/PRPLogo.png";
 import rightimage from "../../assets/images/vector right.png";
 import leftimage from "../../assets/images/vector left.png";
 import arrow from "../../assets/images/arrow.png";
-import star2 from "../../assets/images/star.png";
+import star2 from "../../assets/images/star_banner.png";
 import Button from "../../components/Button";
 import axios from "axios";
 import { useRef } from "react";
