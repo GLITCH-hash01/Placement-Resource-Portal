@@ -6,6 +6,7 @@ import Signin from "./pages/Authorization/Signin";
 import Dashboard from "./pages/Students/Dashboard";
 import Student_Dashboard_Home from "./pages/Students/Home";
 import Student_Roadmaps_Home from "./pages/Students/Roadmaps/Roadmaps";
+import Student_Roadmaps_Roadmap from "./pages/Students/Roadmaps/Roadmap";
 import Signup from "./pages/Authorization/Signup";
 
 export default function Approutes() {
@@ -17,6 +18,7 @@ export default function Approutes() {
         <Route path="/students/dashboard/*" element={<Dashboard />}>
           <Route index element={<Student_Dashboard_Home />} />
           <Route path="roadmaps" element={<Student_Roadmaps_Home />} />
+          <Route path="roadmaps/roadmap" element={<Student_Roadmaps_Roadmap/>} />
         </Route>
         <Route path="/signup" element={<Signup />} />
       </Routes>
