@@ -1,8 +1,7 @@
-import Sidebar from "../../components/Sidebar";
-import Search from "../../components/Search";
 import { Outlet } from "react-router-dom";
 
-import Heading from "../../components/Heading";
+import Sidebar from "../../components/Sidebar";
+import Search from "../../components/Search";
 import ProfileBar from "../../components/ProfileBar";
 
 export default function Dashboard() {

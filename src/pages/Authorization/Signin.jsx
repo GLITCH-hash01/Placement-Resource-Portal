@@ -23,7 +23,7 @@ export default function Signin() {
         toast.success(res.data.message);
         localStorage.setItem("token", res.data.accesstoken);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        setTimeout(() => (window.location.href = "/dashboard"), 2000);
+        setTimeout(() => (window.location.href = "/students/dashboard"), 2000);
       })
       .catch((err) => {
         toast.error(err.response.data.message);

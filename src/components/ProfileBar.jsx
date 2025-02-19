@@ -6,7 +6,7 @@ export default function ProfileBar() {
   return (
     <div className="w-full max-w-64 border h-13 rounded-md justify-between p-2 px-4 items-center flex bg-white  shadow-xl">
 
-      <div className="flex text-md flex-col text-end items-end justify-center">
+      <div className="flex text-md flex-col  justify-center">
         <p>John Honnai</p>
         <p>S5C</p>
       </div>

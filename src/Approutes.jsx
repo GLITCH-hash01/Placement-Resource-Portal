@@ -15,12 +15,12 @@ export default function Approutes() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Signin />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/students/dashboard/*" element={<Dashboard />}>
           <Route index element={<Student_Dashboard_Home />} />
           <Route path="roadmaps" element={<Student_Roadmaps_Home />} />
           <Route path="roadmaps/roadmap" element={<Student_Roadmaps_Roadmap/>} />
         </Route>
-        <Route path="/signup" element={<Signup />} />
       </Routes>
     </BrowserRouter>
   );
