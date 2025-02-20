@@ -5,25 +5,28 @@ import { IoCompassOutline } from "react-icons/io5";
 export default function Roadmaps() {
   return (
     <div
-      className="w-full h-full bg-white rounded-xl p-8"
+      className="w-full h-full bg-white rounded-xl py-8"
       style={{ boxShadow: "0px 3px 0px 0px #9B9BFF" }}>
       <div className="flex items-start mb-6">
         <Heading>Roadmaps</Heading>
       </div>
-      <div className="relative flex items-center w-full">
-        <div className="absolute w-full h-18 bg-black flex items-center mt-100">
-          <div className="w-full border-dashed border-t-2 border-white mx-4 flex items-center justify-center mt-15">
-            <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-250">
-              <IoCompassOutline size={50} />
-            </div>
-          </div>
+      <div className="relative flex items-center h-full w-full">
+        <div className="flex w-full h-20 bg-black items-center">
+          <span className="w-full  border border-white border-dashed"></span>
         </div>
-        <div className="relative w-full flex justify-start px-8">
-          <div className="flex flex-col items-center">
-            <p className="mt-2 bg-primary px-3 py-1 rounded-lg text-center font-primary">
-              Year 1
-            </p>
+        <div className="absolute top-[50%] gap-10 h-72 w-full flex items-center  -translate-y-[50%]">
+          j{" "}
+          <div className="h-full flex flex-col items-center justify-center gap-10">
+            <p>Year</p>
+            <div className=" bg-white h-25   w-25 rounded-full"></div>
+            <p>Foundation</p>
           </div>
+          <div className="h-full flex flex-col items-center justify-center gap-10">
+            <p>Year</p>
+            <div className=" bg-white h-25   w-25 rounded-full"></div>
+            <p>Foundation</p>
+          </div>
+          
         </div>
       </div>
     </div>
