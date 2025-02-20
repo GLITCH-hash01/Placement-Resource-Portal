@@ -26,10 +26,13 @@ export default function Roadmaps() {
             <div className=" bg-white h-25   w-25 rounded-full flex flex-center">
             <IoCompassOutline size={100}/>
             </div>
-            <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
-            <p>Foundation and Basics </p><span className="-rotate-100 text-xl">
-                <IoArrowForwardCircle />
-              </span>
+            <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center flex items-center justify-center " style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
+            <p>Foundation and <br></br>Basics </p>
+            <div className="-rotate-45 text-xl ml-5">
+        
+                <IoArrowForwardCircle className="text-black"/>
+              
+              </div>
             </div>
           </div>
           <div className="h-full flex flex-col items-center justify-center gap-10">
