@@ -12,6 +12,7 @@ import Student_Roadmaps_Roadmap from "./pages/Students/Roadmaps/Roadmap";
 
 import Faculty_Dashboard from "./pages/Faculty/Dashboard";
 import Faculty_Dashboard_Home from "./pages/Faculty/Home";
+import Faculty_Dashboard_Notes from "./pages/Faculty/Notes";
 
 import Alumni_Dashboard from "./pages/Alumni/Dashboard";
 import Alumni_Dashboard_Home from "./pages/Alumni/Home";
@@ -31,8 +32,9 @@ export default function Approutes() {
             element={<Student_Roadmaps_Roadmap />}
           />
         </Route>
-        <Route path="/faculty/dashboard/*" element={<Faculty_Dashboard />}>
-          <Route index element={<Faculty_Dashboard_Home />} />
+        <Route path="/faculty/*" element={<Faculty_Dashboard />}>
+          <Route path="dashboard" element={<Faculty_Dashboard_Home />} />
+          <Route path="notes" element={<Faculty_Dashboard_Notes />} />
         </Route>
         <Route path="/alumni/dashboard/*" element={<Alumni_Dashboard />}>
           <Route index element={<Alumni_Dashboard_Home />} />
