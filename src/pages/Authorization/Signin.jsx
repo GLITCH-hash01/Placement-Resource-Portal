@@ -21,9 +21,22 @@ export default function Signin() {
       })
       .then((res) => {
         toast.success(res.data.message);
-        localStorage.setItem("token", res.data.accesstoken);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        setTimeout(() => (window.location.href = "/dashboard"), 2000);
+        console.log(res.data);
+        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem("user", JSON.stringify(res.data.data));
+        setTimeout(() => {
+          switch (res.data.data.role) {
+            case "student":
+              window.location.href = "/students/dashboard";
+              break;
+            case "faculty":
+              window.location.href = "/faculty/dashboard";
+              break;
+            case "alumni":
+              window.location.href = "/alumni/dashboard";
+              break;
+          }
+        }, 2000);
       })
       .catch((err) => {
         toast.error(err.response.data.message);

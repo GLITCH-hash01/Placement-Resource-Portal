@@ -5,9 +5,12 @@ import { CgNotes } from "react-icons/cg";
 import { MdOutlineContactSupport } from "react-icons/md";
 import { MdEventNote } from "react-icons/md";
 import { RiRoadMapLine } from "react-icons/ri";
+import { useEffect, useState } from "react";
 
-export default function Sidebar({ active }) {
-  const NavLinks = [
+export default function Sidebar({ active = "" }) {
+  const [NavLinks, setNavLinks] = useState([]);
+  const [activeLink, setActiveLink] = useState(active);
+  const StudenNav = [
     {
       name: "Dashboard",
       icon: <RxDashboard />,
@@ -31,9 +34,74 @@ export default function Sidebar({ active }) {
     {
       name: "Roadmap",
       icon: <RiRoadMapLine />,
-      link: "/roadmap",
+      link: "/roadmaps",
     },
   ];
+  const FacultyNav = [
+    {
+      name: "Dashboard",
+      icon: <RxDashboard />,
+      link: "/dashboard",
+    },
+    {
+      name: "Notes",
+      icon: <CgNotes />,
+      link: "/notes",
+    },
+    {
+      name: "Query",
+      icon: <MdOutlineContactSupport />,
+      link: "/events",
+    },
+  ];
+  const AlumniNav = [
+    {
+      name: "Dashboard",
+      icon: <RxDashboard />,
+      link: "/dashboard",
+    },
+    {
+      name: "Query",
+      icon: <MdOutlineContactSupport />,
+      link: "/events",
+    },
+    {
+      name: "Events",
+      icon: <MdEventNote />,
+      link: "/academics",
+    },
+  ];
+
+  useEffect(() => {
+    console.log(window.location.pathname);
+    if (localStorage.getItem("token") === null) {
+      window.location.href = "/login";
+    }
+    var user = JSON.parse(localStorage.getItem("user"));
+    if (user.role === "student") {
+      setNavLinks(StudenNav);
+    } else if (user.role === "faculty") {
+      setNavLinks(FacultyNav);
+    } else if (user.role === "alumni") {
+      setNavLinks(AlumniNav);
+    }
+  }, []);
+  useEffect(() => {
+    if (NavLinks.length > 0) {
+      for (let i = 0; i < NavLinks.length; i++) {
+        console.log(NavLinks[i].link, window.location.pathname);
+        if (window.location.pathname.includes(NavLinks[i].link)) {
+          setActiveLink(NavLinks[i].name);
+        }
+      }
+    }
+  }, [NavLinks]);
+
+  function handleLinkClick(link) {
+    setActiveLink(link);
+    var role = JSON.parse(localStorage.getItem("user")).role;
+    window.location.pathname = role + link;
+  }
 
   return (
     <>
@@ -45,9 +113,10 @@ export default function Sidebar({ active }) {
           {NavLinks.map((item, index) => (
             <button
               key={index}
+              onClick={() => handleLinkClick(item.link)}
               className={
                 "flex size-10  rounded-full  items-center justify-center text-2xl hover:bg-primary cursor-pointer transition  " +
-                (active === item.name ? "bg-primary" : "bg-transparent")
+                (activeLink === item.name ? "bg-primary" : "bg-transparent")
               }>
               {item.icon}
             </button>
