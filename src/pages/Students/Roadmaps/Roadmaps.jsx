@@ -1,7 +1,10 @@
 import React from "react";
 import Heading from "../../../components/Heading";
 import { IoCompassOutline } from "react-icons/io5";
-
+import { FaCalendarCheck } from "react-icons/fa";
+import { PiStudentBold } from "react-icons/pi";
+import { MdOutlineWorkHistory } from "react-icons/md";
+import { IoArrowForwardCircle } from "react-icons/io5";
 export default function Roadmaps() {
   return (
     <div
@@ -20,18 +23,22 @@ export default function Roadmaps() {
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center border-black border-2" style={{ boxShadow: "0px 4px 0px 0px #000000" }}>
             <p>Year 1</p>
             </div>
-            <div className=" bg-white h-25   w-25 rounded-full">
-            <IoCompassOutline />
+            <div className=" bg-white h-25   w-25 rounded-full flex flex-center">
+            <IoCompassOutline size={100}/>
             </div>
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
-            <p>Foundation & Basics</p>
+            <p>Foundation and Basics </p><span className="-rotate-100 text-xl">
+                <IoArrowForwardCircle />
+              </span>
             </div>
           </div>
           <div className="h-full flex flex-col items-center justify-center gap-10">
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center border-black border-2" style={{ boxShadow: "0px 4px 0px 0px #000000" }}>
             <p>Year 2</p>
             </div>
-            <div className=" bg-white h-25   w-25 rounded-full "></div>
+            <div className=" bg-white h-25   w-25 rounded-full flex items-center justify-center" style={{ marginTop: "8px" }}>
+            <FaCalendarCheck size={68}/>
+            </div>
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
             <p>Intermediate Level & Core Subject</p>
             </div>
@@ -40,7 +47,9 @@ export default function Roadmaps() {
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center border-black border-2" style={{ boxShadow: "0px 4px 0px 0px #000000" }}>
             <p>Year 3</p>
             </div>
-            <div className=" bg-white h-25   w-25 rounded-full"></div>
+            <div className=" bg-white h-25   w-25 rounded-full">
+            <PiStudentBold size={90}/>
+            </div>
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
             <p>Specialization & Industry Readiness
             </p>
@@ -50,8 +59,10 @@ export default function Roadmaps() {
             <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center border-black border-2" style={{ boxShadow: "0px 4px 0px 0px #000000" }}>
             <p>Year 4</p>
             </div>
-            <div className=" bg-white h-25   w-25 rounded-full"></div>
-            <div className="bg-primary text-black font-primary px-3 py-2 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
+            <div className=" bg-white h-25   w-25 rounded-full flex items-center justify-center" style={{ marginTop: "15px" }}>
+            <MdOutlineWorkHistory size={75}/>
+            </div>
+            <div className="bg-primary text-black font-primary px-3 py-3 rounded-xl font-bold text-center" style={{ boxShadow: "0px 4px 5px 0px #000000" }}>
             <p>Placement & Career Preparation</p>
             </div>
           </div>
