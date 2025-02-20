@@ -12,9 +12,11 @@ import Student_Roadmaps_Roadmap from "./pages/Students/Roadmaps/Roadmap";
 
 import Faculty_Dashboard from "./pages/Faculty/Dashboard";
 import Faculty_Dashboard_Home from "./pages/Faculty/Home";
+import Faculty_Dashboard_Notes from "./pages/Faculty/Notes";
 
 import Alumni_Dashboard from "./pages/Alumni/Dashboard";
 import Alumni_Dashboard_Home from "./pages/Alumni/Home";
+import Alumni_Dashboard_Events from "./pages/Alumni/Oppurtunities";
 
 export default function Approutes() {
   return (
@@ -27,15 +29,17 @@ export default function Approutes() {
           <Route path="dashboard" element={<Student_Dashboard_Home />} />
           <Route path="roadmaps" element={<Student_Roadmaps_Home />} />
           <Route
-            path="roadmaps/roadmap"
+            path="roadmaps/roadmap/:dep/:year"
             element={<Student_Roadmaps_Roadmap />}
           />
         </Route>
-        <Route path="/faculty/dashboard/*" element={<Faculty_Dashboard />}>
-          <Route index element={<Faculty_Dashboard_Home />} />
+        <Route path="/faculty/*" element={<Faculty_Dashboard />}>
+          <Route path="dashboard" element={<Faculty_Dashboard_Home />} />
+          <Route path="notes" element={<Faculty_Dashboard_Notes />} />
         </Route>
-        <Route path="/alumni/dashboard/*" element={<Alumni_Dashboard />}>
-          <Route index element={<Alumni_Dashboard_Home />} />
+        <Route path="/alumni/*" element={<Alumni_Dashboard />}>
+          <Route path="dashboard" element={<Alumni_Dashboard_Home />} />
+          <Route path="oppurtunities" element={<Alumni_Dashboard_Events />} />
         </Route>
       </Routes>
     </BrowserRouter>

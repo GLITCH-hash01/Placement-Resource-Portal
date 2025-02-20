@@ -68,24 +68,24 @@ export default function Sidebar({ active = "" }) {
     {
       name: "Events",
       icon: <MdEventNote />,
-      link: "/academics",
+      link: "/oppurtunities",
     },
   ];
 
-  // useEffect(() => {
-  //   console.log(window.location.pathname);
-  //   if (localStorage.getItem("token") === null) {
-  //     window.location.href = "/login";
-  //   }
-  //   var user = JSON.parse(localStorage.getItem("user"));
-  //   if (user.role === "student") {
-  //     setNavLinks(StudenNav);
-  //   } else if (user.role === "faculty") {
-  //     setNavLinks(FacultyNav);
-  //   } else if (user.role === "alumni") {
-  //     setNavLinks(AlumniNav);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // console.log(window.location.pathname);
+    // if (localStorage.getItem("token") === null) {
+    //   window.location.href = "/login";
+    // }
+    var user = JSON.parse(localStorage.getItem("user"));
+    if (user.role === "student") {
+      setNavLinks(StudenNav);
+    } else if (user.role === "faculty") {
+      setNavLinks(FacultyNav);
+    } else if (user.role === "alumni") {
+      setNavLinks(AlumniNav);
+    }
+  }, []);
   useEffect(() => {
     if (NavLinks.length > 0) {
       for (let i = 0; i < NavLinks.length; i++) {
