@@ -27,7 +27,7 @@ export default function Signin() {
         setTimeout(() => {
           switch (res.data.data.role) {
             case "student":
-              window.location.href = "/students/dashboard";
+              window.location.href = "/student/dashboard";
               break;
             case "faculty":
               window.location.href = "/faculty/dashboard";

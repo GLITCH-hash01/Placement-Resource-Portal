@@ -68,7 +68,7 @@ export default function Sidebar({ active = "" }) {
     {
       name: "Events",
       icon: <MdEventNote />,
-      link: "/academics",
+      link: "/oppurtunities",
     },
   ];
 
