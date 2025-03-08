@@ -5,7 +5,7 @@ import pattern from "./assets/images/Pattern.png";
 
 import Approutes from "./Approutes";
 function App() {
-  // axios.defaults.baseURL =
+  axios.defaults.baseURL =
     "https://placement-resource-portal-backend.vercel.app/";
   // axios.defaults.baseURL = "http://localhost:5000/";
   return (
