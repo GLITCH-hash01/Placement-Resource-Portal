@@ -1,6 +1,6 @@
 import React from 'react';
 import EventCard from "../../components/EventCard";
-import { Outlet } from "react-router-dom";
+import Heading from "../../components/Heading";
 
 export default function Events() {
   return (
@@ -8,7 +8,9 @@ export default function Events() {
      
       <div className="bg-white w-full h-80 mb-6 p-4">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="bg-primary text-4xl flex w-fit items-start justify-start">College Events</h2>
+        <div>
+            <Heading>College Events</Heading>
+          </div>
           <button className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:primary cursor-pointer"
             style={{ boxShadow: "0px 4px 5px 2px #000000" }}
           >
@@ -25,7 +27,9 @@ export default function Events() {
       
       <div className="bg-white w-full h-80 mt-6">
         <div className="flex justify-between items-center mb-10">
-          <h2 className="bg-primary text-4xl flex w-fit items-start justify-start">Internships</h2>
+        <div>
+            <Heading>Internships</Heading>
+          </div>
           <button className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-primary cursor-pointer"
             style={{ boxShadow: "0px 4px 5px 2px #000000" }}
           >
