@@ -1,7 +1,7 @@
 import React from "react";
 import EventCard from "../../components/EventCard";
 import Heading from "../../components/Heading";
-import posterimg from "../assets/images/testposter.jpg";
+
 export default function Events() {
 
   const events = [
