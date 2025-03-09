@@ -5,7 +5,7 @@ import star from "../../assets/images/star.png";
 export default function Notes() {
   return (
     <>
-      <div className="flex flex-col w-full h-full p-8">
+      <div className="flex flex-col w-full h-full p-8 overflow-y-scroll">
         <div className="max-w-70 bg-primary my-10 p-2">
         <h2 className="text-4xl font-bold font-primary text-black mb-4">Academic Notes</h2>
         
