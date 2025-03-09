@@ -6,11 +6,7 @@ export default function Notes() {
   return (
     <>
       <div className="flex flex-col w-full h-full p-8 overflow-y-scroll">
-        <div className="max-w-70 bg-primary my-10 p-2">
-        <h2 className="text-4xl font-bold font-primary text-black mb-4">Academic Notes</h2>
-        
-        </div>
-        <div className="grid grid-cols-4 gap-4 mb-8 bg-four p-12 rounded-3xl">
+        <div className="grid grid-cols-4 gap-3 mb-8 bg-four p-12 rounded-3xl">
           <Card title={"CST 201"} desc={"Algorithm Analysis and Design"} />
           <Card title={"CST 202"} desc={"Data Structures"} />
           <Card title={"CST 203"} desc={"Operating Systems"} />
