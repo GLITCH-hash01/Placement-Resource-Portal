@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "../../components/Card";
-import star from "../../assets/images/star.png";
 import Heading from "../../components/Heading";
 
 export default function Notes() {
@@ -21,6 +20,9 @@ export default function Notes() {
         <Card title={"Module 3"} desc={"HR Interview Tips"} />
         <Card title={"Module 4"} desc={"Resume Writing"} />
       </div>
+      <div className="absolute -top-[-135px] -right-[-120px] bg-gray-200 text-black px-5 py-2 rounded-2xl shadow-md">
+          S5
+        </div>
       </div> 
     </>
   );
