@@ -161,7 +161,7 @@ export default function Notes() {
                   title={course.code}
                   desc={course.name}
                   onClick={() => {
-                    window.location.href += "/note";
+                    window.location.href += `/${course.code}`;
                   }}
                 />
               ))}
