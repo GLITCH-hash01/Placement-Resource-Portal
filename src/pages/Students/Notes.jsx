@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "../../components/Card";
-import star from "../../assets/images/star.png";
 import Heading from "../../components/Heading";
 
 export default function Notes() {
@@ -14,18 +13,17 @@ export default function Notes() {
           <Card title={"CST 203"} desc={"Operating Systems"} />
           <Card title={"CST 204"} desc={"Computer Networks"} />
         </div>
-        <div className="max-w-75 bg-primary my-10 p-2">
-          <h2 className="text-4xl font-bold font-primary text-black mb-4">
-            Placement Notes
-          </h2>
-        </div>
-        <div className="grid grid-cols-4 gap-4 bg-four p-12 rounded-3xl">
-          <Card title={"Module 1"} desc={"Aptitude & Logical Skills"} />
-          <Card title={"Module 2"} desc={"Technical Interview Prep"} />
-          <Card title={"Module 3"} desc={"HR Interview Tips"} />
-          <Card title={"Module 4"} desc={"Resume Writing"} />
-        </div>
+        <Heading>Placement Notes</Heading>
+      <div className="grid grid-cols-4 gap-4 bg-four p-12 rounded-3xl">
+        <Card title={"Module 1"} desc={"Aptitude & Logical Skills"} />
+        <Card title={"Module 2"} desc={"Technical Interview Prep"} />
+        <Card title={"Module 3"} desc={"HR Interview Tips"} />
+        <Card title={"Module 4"} desc={"Resume Writing"} />
       </div>
+      <div className="absolute -top-[-135px] -right-[-120px] bg-gray-200 text-black px-5 py-2 rounded-2xl shadow-md">
+          S5
+        </div>
+      </div> 
     </>
   );
 }
