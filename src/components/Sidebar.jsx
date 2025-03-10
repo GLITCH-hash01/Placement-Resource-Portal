@@ -106,7 +106,7 @@ export default function Sidebar({ active = "" }) {
   return (
     <>
       <div
-        className=" w-19 h-[90vh] rounded-xl bg-white border-2 border-black flex flex-col justify-between items-center py-8 max-h-[1800px]"
+        className=" shrink-0 w-19 h-[90vh] rounded-xl bg-white border-2 border-black flex flex-col justify-between items-center py-8 max-h-[1800px]"
         style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <img src={Logo} alt="" className="size-12" />
         <div className="flex w-full h-fit  flex-col gap-5 items-center">
