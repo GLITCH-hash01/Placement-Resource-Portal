@@ -12,6 +12,7 @@ import Student_Roadmaps_Roadmap from "./pages/Students/Roadmaps/Roadmap";
 import Student_Notes from "./pages/Students/Notes";
 import Student_Notes_Note from "./pages/Students/Note";
 import Student_Event from "./pages/Students/Events";
+import Student_Query from "./pages/Students/Query";
 
 import Faculty_Dashboard from "./pages/Faculty/Dashboard";
 import Faculty_Dashboard_Home from "./pages/Faculty/Home";
@@ -38,6 +39,7 @@ export default function Approutes() {
           <Route path="notes" element={<Student_Notes />} />
           <Route path="notes/note" element={<Student_Notes_Note />} />
           <Route path="event" element={<Student_Event />} />
+          <Route path="query" element={<Student_Query />} />
         </Route>
         <Route path="/faculty/*" element={<Faculty_Dashboard />}>
           <Route path="dashboard" element={<Faculty_Dashboard_Home />} />

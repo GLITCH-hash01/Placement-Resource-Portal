@@ -15,15 +15,17 @@ export default function Notes() {
           <Card title={"CST 204"} desc={"Computer Networks"} />
         </div>
         <div className="max-w-75 bg-primary my-10 p-2">
-        <h2 className="text-4xl font-bold font-primary text-black mb-4">Placement Notes</h2>
+          <h2 className="text-4xl font-bold font-primary text-black mb-4">
+            Placement Notes
+          </h2>
         </div>
-      <div className="grid grid-cols-4 gap-4 bg-four p-12 rounded-3xl">
-        <Card title={"Module 1"} desc={"Aptitude & Logical Skills"} />
-        <Card title={"Module 2"} desc={"Technical Interview Prep"} />
-        <Card title={"Module 3"} desc={"HR Interview Tips"} />
-        <Card title={"Module 4"} desc={"Resume Writing"} />
+        <div className="grid grid-cols-4 gap-4 bg-four p-12 rounded-3xl">
+          <Card title={"Module 1"} desc={"Aptitude & Logical Skills"} />
+          <Card title={"Module 2"} desc={"Technical Interview Prep"} />
+          <Card title={"Module 3"} desc={"HR Interview Tips"} />
+          <Card title={"Module 4"} desc={"Resume Writing"} />
+        </div>
       </div>
-      </div> 
     </>
   );
 }
