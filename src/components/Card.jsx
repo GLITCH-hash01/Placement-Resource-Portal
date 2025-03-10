@@ -10,7 +10,7 @@ export default function Card({
   onClick,
 }) {
   return (
-    <div className="relative w-[300px] h-fit min-h-[150px]">
+    <div className="relative w-fit h-fit min-h-[150px]">
       {/* SVG Clip Path Definition */}
       <svg width="0" height="0">
         <defs>

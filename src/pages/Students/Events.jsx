@@ -1,11 +1,12 @@
 import React from "react";
-import EventCard from "../../components/EventCard";
+import EventCard from "../../components/Card";
 import Heading from "../../components/Heading";
+import posterimg from "../../assets/images/testposter.jpg"
 
 export default function Events() {
 
   const events = [
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: "/assets/images/testposter.jpg" },
+    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg  },
     { title: "Advent", desc: "Advent is an event of IEEE", poster: "/assets/images/testposter.jpg" },
     { title: "Advent", desc: "Advent is an event of IEEE", poster: "/assets/images/testposter.jpg"},
   ];
@@ -18,10 +19,10 @@ export default function Events() {
   ];
 
   return (
-    <div className="p-4">
+    <div className="p-4 flex flex-col gap-4 overflow-y-scroll">
   
       <div className="bg-white w-full min-h-80 mb-6 p-4 shadow-md rounded-lg">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-10">
           <Heading>College Events</Heading>
           <button
             className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"
@@ -46,7 +47,7 @@ export default function Events() {
 
       
       <div className="bg-white w-full min-h-80 mt-6 p-3 shadow-md rounded-lg">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-center mb-10">
           <Heading>Internships</Heading>
           <button
             className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"

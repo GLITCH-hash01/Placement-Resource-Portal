@@ -24,12 +24,12 @@ export default function Sidebar({ active = "" }) {
     {
       name: "Query",
       icon: <MdOutlineContactSupport />,
-      link: "/events",
+      link: "/query",
     },
     {
       name: "Events",
       icon: <MdEventNote />,
-      link: "/academics",
+      link: "/events",
     },
     {
       name: "Roadmap",
