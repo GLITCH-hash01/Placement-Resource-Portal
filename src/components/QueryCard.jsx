@@ -1,3 +1,4 @@
+import { FaRegCommentAlt } from "react-icons/fa";
 import React from "react";
 
 export default function QueryCard({ desc, response_count, onClick }) {

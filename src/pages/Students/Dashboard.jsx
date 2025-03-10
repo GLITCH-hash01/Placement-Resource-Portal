@@ -9,12 +9,12 @@ export default function Dashboard() {
     <>
       <div className="w-screen h-screen p-8 flex justify-center  items-center gap-10">
         <Sidebar active={"Dashboard"} />
-        <div className="w-full h-full flex flex-col max-w-[90%]  gap-8">
+        <div className="w-full h-full flex flex-col max-w-[90%] grow-0 gap-8">
           <div className="flex gap-10 justify-between px-10 items-center">
             <Search />
             <ProfileBar />
           </div>
-          <div className="w-full h-full ">
+          <div className="w-full h-[90%] ">
             <Outlet />
           </div>
         </div>
