@@ -35,7 +35,7 @@ export default function Card({
         )}
         <div className="py-3 px-3 flex flex-col justify-center ">
           <h1 className="font-semibold text-lg">{title}</h1>
-          <p className="text-sm text-ellipsis">{desc?desc :""}</p>
+          {/* <p className="text-sm text-ellipsis">{desc?desc :""}</p> */}
         </div>
         <div className="flex justify-between px-3 h">
           <span className="flex gap-2 items-center justify-center w-fit text-xs">
