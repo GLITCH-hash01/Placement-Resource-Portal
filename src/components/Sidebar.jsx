@@ -51,7 +51,7 @@ export default function Sidebar({ active = "" }) {
     {
       name: "Query",
       icon: <MdOutlineContactSupport />,
-      link: "/events",
+      link: "/query",
     },
   ];
   const AlumniNav = [
@@ -63,7 +63,7 @@ export default function Sidebar({ active = "" }) {
     {
       name: "Query",
       icon: <MdOutlineContactSupport />,
-      link: "/events",
+      link: "/query",
     },
     {
       name: "Events",

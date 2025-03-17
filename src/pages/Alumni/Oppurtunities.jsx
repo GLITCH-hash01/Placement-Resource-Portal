@@ -84,7 +84,7 @@ export default function Oppurtunities() {
             </div>
           ))
         ) : (
-          <p className="text-primary ">You haven't uploaded any notes yet </p>
+          <p className="text-primary ">You haven't uploaded any oppurtunities yet </p>
         )}
       </div>
       {oppurtunityWindow && (
@@ -94,7 +94,7 @@ export default function Oppurtunities() {
           <div
             onClick={(e) => e.stopPropagation()}
             className="z-10 w-110 rounded-xl justify-around  items-center p-7  h-3/4 bg-white border-2 flex flex-col border-primary">
-            <h2 className="text-3xl font-semibold">Add new notes</h2>
+            <h2 className="text-3xl font-semibold">Add new Oppurtunity</h2>
             <form action="" className="py-3 flex gap-5 flex-col w-full text-xl">
               <input
                 ref={title}

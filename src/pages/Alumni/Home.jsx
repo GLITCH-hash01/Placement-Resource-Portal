@@ -2,23 +2,32 @@ import React from "react";
 import Heading from "../../components/Heading";
 import Card from "../../components/Card";
 import posterimg from "../../assets/images/testposter.jpg";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Home() {
-  const events = [
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-  ];
-
+  const [events, setEvents] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("/events/latest", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setEvents(res.data.events);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="p-4 w-full h-full custom-scrollbar flex flex-col gap-8 overflow-y-auto">
       <div
         className="bg-white w-full h-fit p-4 py-10 shadow-md mb-20 rounded-lg"
-        style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}
-      >
+        style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <div className="flex justify-between items-center mb-10">
           <Heading>Events</Heading>
           {/* <button

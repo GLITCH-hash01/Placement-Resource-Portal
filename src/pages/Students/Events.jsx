@@ -2,18 +2,29 @@ import React from "react";
 import EventCard from "../../components/Card";
 import Heading from "../../components/Heading";
 import posterimg from "../../assets/images/testposter.jpg";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Events() {
-  const events = [
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-  ];
-
   const internships = [];
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("/events/get-all", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setEvents(res.data.events);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="p-4  w-full h-full custom-scrollbar flex flex-col gap-8 overflow-y-auto">
@@ -36,7 +47,7 @@ export default function Events() {
                 key={index}
                 title={event.title}
                 desc={event.desc}
-                poster={event.poster}
+                poster={event.poster_url}
                 isPoster={true}
               />
             ))}

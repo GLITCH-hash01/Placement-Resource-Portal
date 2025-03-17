@@ -6,10 +6,15 @@ import { useState, useEffect, useRef } from "react";
 export default function Query() {
   const queryRef = useRef(null);
   const [queries, setQueries] = useState([]);
+
+  const funcOnClick = (id) => {
+    window.location.href = window.location.href + `/${id}`;
+  };
+
   const fetchQueries = () => {
     const token = localStorage.getItem("token");
     axios
-      .get("/queries/get/me", {
+      .get("/queries/get/all", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -67,13 +72,14 @@ export default function Query() {
         </button>
       </div>
       <div className="flex w-full  h-full flex-col gap-5 ">
-        <h3 className="text-xl font-semibold">Your Questions</h3>
+        <h3 className="text-xl font-semibold">Questions</h3>
         <div className="w-full h-fit overflow-y-auto flex flex-col gap-5">
           {queries.map((query, index) => (
             <QueryCard
               desc={query.query_desc}
               response_count={query.responses.length}
               key={index}
+              onClick={()=>funcOnClick(query.query_id)}
             />
           ))}
         </div>

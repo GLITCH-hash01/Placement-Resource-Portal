@@ -1,26 +1,50 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Heading from "../../components/Heading";
 import Card from "../../components/Card";
 import posterimg from "../../assets/images/testposter.jpg";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Home() {
-  const events = [
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-    { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
-  ];
-  const notes = [
-    { code: "EST102", name: "Programming in C" },
-    { code: "EST120", name: "Basics of Civil and Mechanical Engineering" },
-    { code: "MAT102", name: "Differential Equations" },
-    { code: "EST100", name: "Engineering Physics" },
-    { code: "EST112", name: "Environmental Studies" },
-    { code: "EST104", name: "Engineering Mechanics" },
-    { code: "EST132", name: "Programming Lab in C" },
-  ];
+  // const events = [
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  //   { title: "Advent", desc: "Advent is an event of IEEE", poster: posterimg },
+  // ];
+  const [events, setEvents] = useState([]);
+  const [notes, setNotes] = useState([]);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get("/notes/latest", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setNotes(res.data.notes);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    axios
+      .get("/events/latest", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setEvents(res.data.events);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <div className="p-4  w-full h-full custom-scrollbar flex flex-col gap-8 overflow-y-auto">
       <div
@@ -40,9 +64,9 @@ export default function Home() {
             {notes.map((note, index) => (
               <Card
                 key={index}
-                title={note.code}
+                title={note.title}
                 desc={note.name}
-                
+                onClick={() => (window.location.href = note.doc_url)}
               />
             ))}
           </div>
@@ -73,7 +97,7 @@ export default function Home() {
                   key={index}
                   title={event.title}
                   desc={event.desc}
-                  poster={event.poster}
+                  poster={event.poster_url}
                   isPoster={true}
                 />
               ))}

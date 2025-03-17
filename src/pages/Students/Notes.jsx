@@ -154,7 +154,7 @@ export default function Notes() {
             </select>
           </div>
           <div className="flex gap-5 mb-8 bg-four p-12 rounded-3xl ">
-            <div className="flex gap-5 overflow-y-scroll custom-scrollbar">
+            <div className="flex gap-5 overflow-x-scroll custom-scrollbar">
               {Courses.CSE[selectedSem].map((course, index) => (
                 <Card
                   key={index}
@@ -171,7 +171,7 @@ export default function Notes() {
         <div className="flex flex-col gap-8 mb-10">
           <Heading>Placement Notes</Heading>
           <div className="flex gap-5 bg-four p-12 rounded-3xl">
-            <div className="  flex gap-5  overflow-y-scroll custom-scrollbar">
+            <div className="  flex gap-5  overflow-x-scroll custom-scrollbar">
               {PlacementNotes.CSE.map((note, index) => (
                 <Card
                   key={index}
