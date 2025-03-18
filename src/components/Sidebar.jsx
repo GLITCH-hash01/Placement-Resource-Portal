@@ -71,6 +71,23 @@ export default function Sidebar({ active = "" }) {
       link: "/oppurtunities",
     },
   ];
+  const TPCNav=[
+    {
+      name: "Dashboard",
+      icon: <RxDashboard />,
+      link: "/dashboard",
+    },
+    {
+      name: "Notes",
+      icon: <CgNotes />,
+      link: "/notes",
+    },
+    {
+      name:"Roadmap",
+      icon:<RiRoadMapLine />,
+      link:"/roadmaps"
+    }
+  ]
 
   useEffect(() => {
     // console.log(window.location.pathname);

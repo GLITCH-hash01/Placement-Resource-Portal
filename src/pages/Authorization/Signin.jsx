@@ -25,17 +25,7 @@ export default function Signin() {
         localStorage.setItem("token", res.data.access_token);
         localStorage.setItem("user", JSON.stringify(res.data.data));
         setTimeout(() => {
-          switch (res.data.data.role) {
-            case "student":
-              window.location.href = "/student/dashboard";
-              break;
-            case "faculty":
-              window.location.href = "/faculty/dashboard";
-              break;
-            case "alumni":
-              window.location.href = "/alumni/dashboard";
-              break;
-          }
+          window.location.href = `/${res.data.data.role}/dashboard`;
         }, 2000);
       })
       .catch((err) => {

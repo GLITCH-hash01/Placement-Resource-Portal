@@ -60,16 +60,16 @@ export default function Oppurtunities() {
       });
   }
   return (
-    <div className="flex flex-col items-center gap-3 justify-center h-full w-full">
+    <div className="flex flex-col items-center gap-3 justify-center h-full w-full ">
       <div className="flex items-start justify-between w-full">
         <Heading>Oppurtunities</Heading>
         <button
           onClick={() => setoppurtunityWindow(true)}
-          className="bg-primary hover:bg-four transition-all duration-150 delay-100 ease-in-out px-4 border-2 rounded-xl text-2xl font-primary font-bold border-black py-2 cursor-pointer flex items-center justify-center w-fit gap-3">
+          className="bg-primary hover:bg-four  transition-all duration-150 delay-100 ease-in-out px-4 border-2 rounded-xl text-2xl font-primary font-bold border-black py-2 cursor-pointer flex items-center justify-center w-fit gap-3">
           Add Oppurtunity
         </button>
       </div>
-      <div className="w-full h-full flex-col rounded-xl bg-white flex p-4 ">
+      <div className="w-full h-full flex-col rounded-xl bg-white flex p-4 max-[400px]:bg-blue-400 ">
         {/* <p className="text-primary ">You haven't uploaded any notes yet </p> */}
         {oppurtunities.length > 0 ? (
           oppurtunities.map((oppurtunity, index) => (
