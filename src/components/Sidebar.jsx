@@ -71,7 +71,7 @@ export default function Sidebar({ active = "" }) {
       link: "/oppurtunities",
     },
   ];
-  const TPCNav=[
+  const TPCNav = [
     {
       name: "Dashboard",
       icon: <RxDashboard />,
@@ -83,11 +83,11 @@ export default function Sidebar({ active = "" }) {
       link: "/notes",
     },
     {
-      name:"Roadmap",
-      icon:<RiRoadMapLine />,
-      link:"/roadmaps"
-    }
-  ]
+      name: "Roadmap",
+      icon: <RiRoadMapLine />,
+      link: "/roadmaps",
+    },
+  ];
 
   useEffect(() => {
     // console.log(window.location.pathname);
@@ -101,6 +101,8 @@ export default function Sidebar({ active = "" }) {
       setNavLinks(FacultyNav);
     } else if (user.role === "alumni") {
       setNavLinks(AlumniNav);
+    } else if (user.role === "tpc") {
+      setNavLinks(TPCNav);
     }
   }, []);
   useEffect(() => {

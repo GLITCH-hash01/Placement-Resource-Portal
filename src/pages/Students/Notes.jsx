@@ -1,6 +1,8 @@
 import React from "react";
 import Card from "../../components/Card";
 import Heading from "../../components/Heading";
+import { useEffect, useState, useRef } from "react";
+import axios from "axios";
 
 const Courses = {
   CSE: {
@@ -129,8 +131,31 @@ const PlacementNotes = {
 };
 
 export default function Notes() {
-  const [selectedSem, setSelectedSem] = React.useState("s5");
+  const [selectedSem, setSelectedSem] = useState(1);
+  const [courseList, setCourseList] = useState([]);
   console.log(Courses.CSE[selectedSem]);
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user == null) {
+      window.location.href = "/login";
+    }
+    const userdata = JSON.parse(user);
+    console.log(`/notes/courses/list/${userdata.department}}/${selectedSem}`);
+    axios
+      .get(`/notes/courses/list/${userdata.department}/${selectedSem}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        setCourseList(res.data.courses);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [selectedSem]);
+
   return (
     <>
       <div className="flex flex-col w-full h-full py-10  p-8 overflow-y-scroll custom-scrollbar ">
@@ -143,28 +168,29 @@ export default function Notes() {
               value={selectedSem}
               id=""
               className="px-7 text-xl outline-primary appearance-none cursor-pointer rounded-md py-1 bg-four">
-              <option value="s1">S1</option>
-              <option value="s2">S2</option>
-              <option value="s3">S3</option>
-              <option value="s4">S4</option>
-              <option value="s5">S5</option>
-              <option value="s6">S6</option>
-              <option value="s7">S7</option>
-              <option value="s8">S8</option>
+              <option value={1}>S1</option>
+              <option value={2}>S2</option>
+              <option value={3}>S3</option>
+              <option value={4}>S4</option>
+              <option value={5}>S5</option>
+              <option value={6}>S6</option>
+              <option value={7}>S7</option>
+              <option value={8}>S8</option>
             </select>
           </div>
           <div className="flex gap-5 mb-8 bg-four p-12 rounded-3xl ">
-            <div className="flex gap-5 overflow-x-scroll custom-scrollbar">
-              {Courses.CSE[selectedSem].map((course, index) => (
-                <Card
-                  key={index}
-                  title={course.code}
-                  desc={course.name}
-                  onClick={() => {
-                    window.location.href += `/${course.code}`;
-                  }}
-                />
-              ))}
+            <div className="flex gap-5 overflow-x-auto custom-scrollbar">
+              {Array.isArray(courseList) &&
+                courseList.map((course, index) => (
+                  <Card
+                    key={index}
+                    title={course.course_code}
+                    desc={course.name}
+                    onClick={() => {
+                      window.location.href += `/${course.course_code}`;
+                    }}
+                  />
+                ))}
             </div>
           </div>
         </div>

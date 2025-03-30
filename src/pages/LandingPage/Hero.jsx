@@ -6,7 +6,7 @@ import Button from "../../components/Button";
 export default function Hero() {
   return (
     <>
-      <div className="flex justify-center items-center gap-30 w-screen h-screen">
+      <div className="flex justify-center items-center gap-30 w-screen h-screen" id="home">
         <div className="flex flex-col justify-center items-left gap-10">
           <h1 className="text-7xl leading-24 font-primary font-bold text-left ">
             {" "}
@@ -24,6 +24,7 @@ export default function Hero() {
           </p>
 
           <Button
+            onClick={() => {window.location.href="/signup"}}
             icon={
               <span className="-rotate-45 text-2xl">
                 <FaArrowCircleRight />

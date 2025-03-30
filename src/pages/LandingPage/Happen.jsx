@@ -5,7 +5,9 @@ import { FaArrowCircleRight } from "react-icons/fa";
 export default function Happen() {
   return (
     <>
-      <div className="flex flex-col justify-center items-center w-screen h-screen gap-30 pl-3">
+      <div
+        className="flex flex-col justify-center items-center w-screen h-screen gap-30 pl-3"
+        id="about">
         <div className="bg-four p-10 rounded-lg shadow-lg w-300 h-90 mt-0.5 ">
           <h2 className="text-3xl font-primary font-bold mb-4 pl-8">
             Let's make this Happen
@@ -31,6 +33,9 @@ export default function Happen() {
               className="w-60 h-50 mt-4 absolute -top-13 right-20"
             />
             <button
+              onClick={() => {
+                window.location.href = "/signup";
+              }}
               className="bg-primary px-8 pl-8 text-2xl border-2 rounded-2xl max-w-60 h-15 font-primary font-bold 
                 border-black py-2 cursor-pointer flex gap-2 items-center justify-center mt-10 "
               style={{ boxShadow: "0px 4px 0px    0px#000" }}>

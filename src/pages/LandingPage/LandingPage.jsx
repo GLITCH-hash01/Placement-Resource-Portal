@@ -7,7 +7,7 @@ import Footer from "./Footer";
 export default function LandingPage() {
   return (
     <>
-      <div className="w-fit h-fit">
+      <div className="w-fit h-fit scroll-smooth">
         <Navbar />
         <Hero />
         <Services />
