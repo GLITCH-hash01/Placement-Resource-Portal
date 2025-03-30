@@ -1,82 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../../components/Card";
 import Heading from "../../components/Heading";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { LoadingContext } from "../../ContextStore";
 
-const Courses = {
-  CSE: {
-    s1: [
-      { code: "EST100", name: "Engineering Physics" },
-      { code: "EST110", name: "Engineering Graphics" },
-      { code: "HUN101", name: "Life Skills" },
-      { code: "PHT100", name: "Engineering Physics Lab" },
-      { code: "MAT101", name: "Calculus" },
-      {
-        code: "EST130",
-        name: "Basics of Electrical and Electronics Engineering",
-      },
-      { code: "CYT100", name: "Engineering Chemistry" },
-      { code: "CYL120", name: "Engineering Chemistry Lab" },
-    ],
-    s2: [
-      { code: "EST102", name: "Programming in C" },
-      { code: "EST120", name: "Basics of Civil and Mechanical Engineering" },
-      { code: "MAT102", name: "Differential Equations" },
-      { code: "EST100", name: "Engineering Physics" },
-      { code: "EST112", name: "Environmental Studies" },
-      { code: "EST104", name: "Engineering Mechanics" },
-      { code: "EST132", name: "Programming Lab in C" },
-    ],
-    s3: [
-      { code: "CST201", name: "Discrete Computational Structures" },
-      { code: "CST203", name: "Data Structures" },
-      { code: "CST205", name: "Object Oriented Programming" },
-      { code: "CST207", name: "Electronic Circuits & Devices" },
-      { code: "MCN201", name: "Sustainable Engineering" },
-      { code: "CSL203", name: "Data Structures Lab" },
-      { code: "CSL205", name: "OOP Lab" },
-    ],
-    s4: [
-      { code: "CST202", name: "Computer Organization & Architecture" },
-      { code: "CST204", name: "Operating Systems" },
-      { code: "CST206", name: "Database Management Systems" },
-      { code: "CST208", name: "Principles of Programming Languages" },
-      { code: "MCN202", name: "Constitution of India" },
-      { code: "CSL202", name: "Operating Systems Lab" },
-      { code: "CSL206", name: "Database Lab" },
-    ],
-    s5: [
-      { code: "CST301", name: "Theory of Computation" },
-      { code: "CST303", name: "System Software" },
-      { code: "CST305", name: "Computer Networks" },
-      { code: "CST307", name: "Microprocessors and Microcontrollers" },
-      { code: "HUT300", name: "Professional Ethics" },
-      { code: "CSL331", name: "Networks Lab" },
-      { code: "CSL333", name: "Hardware Lab" },
-    ],
-    s6: [
-      { code: "CST302", name: "Design and Analysis of Algorithms" },
-      { code: "CST304", name: "Compiler Design" },
-      { code: "CST306", name: "Software Engineering and Project Management" },
-      { code: "CST308", name: "Web Technologies" },
-      { code: "CSL332", name: "Compiler Lab" },
-      { code: "CSL334", name: "Mini Project" },
-    ],
-    s7: [
-      { code: "CST401", name: "Artificial Intelligence" },
-      { code: "CST403", name: "Distributed Computing" },
-      { code: "CST405", name: "Computer Graphics & Image Processing" },
-      { code: "CSL411", name: "Project Phase I" },
-      { code: "CSL413", name: "Seminar" },
-    ],
-    s8: [
-      { code: "CST402", name: "Machine Learning" },
-      { code: "CST404", name: "Cyber Security & Privacy" },
-      { code: "CSL412", name: "Project Phase II" },
-    ],
-  },
-};
 const PlacementNotes = {
   CSE: [
     {
@@ -131,16 +59,18 @@ const PlacementNotes = {
 };
 
 export default function Notes() {
+  const [loading, setLoading] = useContext(LoadingContext);
   const [selectedSem, setSelectedSem] = useState(1);
   const [courseList, setCourseList] = useState([]);
-  console.log(Courses.CSE[selectedSem]);
+  const [placementNotes, setPlacementNotes] = useState([]);
+
   useEffect(() => {
     const user = localStorage.getItem("user");
+    const userdata = JSON.parse(user);
     if (user == null) {
       window.location.href = "/login";
     }
-    const userdata = JSON.parse(user);
-    console.log(`/notes/courses/list/${userdata.department}}/${selectedSem}`);
+
     axios
       .get(`/notes/courses/list/${userdata.department}/${selectedSem}`, {
         headers: {
@@ -148,11 +78,29 @@ export default function Notes() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setCourseList(res.data.courses);
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        setLoading(false);
+        console.error(err);
+        toast.error(`Error fetching courses ${err.message}`);
+      });
+
+    axios
+      .get(`/notes/placements`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        setPlacementNotes(res.data.placements);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.error(err);
+        toast.error(`Error fetching placement notes ${err.message}`);
       });
   }, [selectedSem]);
 
@@ -198,22 +146,19 @@ export default function Notes() {
           <Heading>Placement Notes</Heading>
           <div className="flex gap-5 bg-four p-12 rounded-3xl">
             <div className="  flex gap-5  overflow-x-scroll custom-scrollbar">
-              {PlacementNotes.CSE.map((note, index) => (
+              {placementNotes.map((note, index) => (
                 <Card
                   key={index}
                   title={note.title}
                   desc={note.description}
                   onClick={() => {
-                    window.location.href += "/note";
+                    window.location.href = note.doc_url;
                   }}
                 />
               ))}
             </div>
           </div>
         </div>
-        {/* <div className="absolute -top-[-135px] -right-[-120px] bg-gray-200 text-black px-5 py-2 rounded-2xl shadow-md">
-          S5
-        </div> */}
       </div>
     </>
   );

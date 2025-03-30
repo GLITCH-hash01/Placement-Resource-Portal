@@ -21,11 +21,13 @@ export default function Happen() {
           </div>
           <div className="mt-8 relative pl-8">
             <p className="text-third text-left w-150 h-fit flex flex-col font-primary font-light t mt-4">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate
+              Your journey toward a successful career starts here! Whether
+              you're preparing for placements, exploring internships, or
+              enhancing your skills, this platform provides the guidance and
+              resources you need to excel. Stay ahead with industry insights,
+              expert-curated materials, and opportunities that will help you
+              achieve your goals. Take charge of your future—let’s make it
+              happen!
             </p>
             <img
               src={circle}
