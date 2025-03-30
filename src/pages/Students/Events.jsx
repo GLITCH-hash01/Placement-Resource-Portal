@@ -1,13 +1,15 @@
 import React from "react";
 import EventCard from "../../components/Card";
 import Heading from "../../components/Heading";
-import posterimg from "../../assets/images/testposter.jpg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
+import { LoadingContext } from "../../ContextStore";
+import { toast } from "react-toastify";
 
 export default function Events() {
   const internships = [];
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -18,11 +20,13 @@ export default function Events() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setEvents(res.data.events);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        toast.error(`Error fetching events ${err.message}`);
       });
   }, []);
 
@@ -33,11 +37,6 @@ export default function Events() {
         style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <div className="flex justify-between items-center mb-10">
           <Heading>College Events</Heading>
-          {/* <button
-            className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"
-            style={{ boxShadow: "0px 4px 5px 2px rgba(0, 0, 0, 0.2)" }}>
-            View All
-          </button> */}
         </div>
 
         <div className="flex px-5 gap-5 w-full h-fit items-start justify-start">
@@ -48,6 +47,9 @@ export default function Events() {
                 title={event.title}
                 desc={event.desc}
                 poster={event.poster_url}
+                onClick={() => {
+                  window.open(event.know_more?event.know_more:"https://www.google.com", "_blank");
+                }}
                 isPoster={true}
               />
             ))}
@@ -60,11 +62,6 @@ export default function Events() {
         style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <div className="flex justify-between items-center mb-10">
           <Heading>Internships</Heading>
-          {/* <button
-            className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"
-            style={{ boxShadow: "0px 4px 5px 2px rgba(0, 0, 0, 0.2)" }}>
-            View All
-          </button> */}
         </div>
 
         <div className="flex gap-5  w-full h-fit items-center justify-start">

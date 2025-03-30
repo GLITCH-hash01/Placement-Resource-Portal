@@ -1,11 +1,13 @@
 import React from "react";
 import QueryCard from "../../components/QueryCard";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { LoadingContext } from "../../ContextStore";
 
 export default function Query() {
   const queryRef = useRef(null);
   const [queries, setQueries] = useState([]);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   const funcOnClick = (id) => {
     window.location.href = window.location.href + `/${id}`;
@@ -21,6 +23,7 @@ export default function Query() {
       })
       .then((res) => {
         console.log(res.data);
+        setLoading(false);
         setQueries(res.data.queries);
       })
       .catch((err) => {
@@ -49,6 +52,7 @@ export default function Query() {
       .then((res) => {
         console.log(res.data);
         queryRef.current.value = "";
+        setLoading(false);
         fetchQueries();
       })
       .catch((err) => {
@@ -79,7 +83,7 @@ export default function Query() {
               desc={query.query_desc}
               response_count={query.responses.length}
               key={index}
-              onClick={()=>funcOnClick(query.query_id)}
+              onClick={() => funcOnClick(query.query_id)}
             />
           ))}
         </div>
