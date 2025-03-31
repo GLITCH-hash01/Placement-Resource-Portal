@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("/events/internships/latest", {
+      .get("/events/latest", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

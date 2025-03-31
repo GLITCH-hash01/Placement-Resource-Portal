@@ -59,9 +59,9 @@ export default function Home() {
         </div>
 
         <div className="flex px-5 gap-5 w-full h-fit items-start justify-start">
-          <div className="overflow-x-auto custom-scrollbar flex gap-5">
+          <div className="overflow-x-auto w-full custom-scrollbar flex gap-5">
             {Array.isArray(notes) && notes.length === 0 ? (
-              <div className="text-center w-full h-full text-2xl font-bold text-gray-400">
+              <div className="text-center w-full h-full text-2xl flex font-bold text-gray-400">
                 No Notes available
               </div>
             ) : (
