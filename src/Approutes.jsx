@@ -32,7 +32,7 @@ import Tpc_Dashboard_Roadmaps from "./pages/TPC/Roadmaps";
 import Tpc_Dashboard_Roadmaps_Dep from "./pages/TPC/Roadmaps/Roadmap_dep";
 import Tpc_Dashboard_Roadmaps_Year from "./pages/TPC/Roadmaps/Roadmap_year";
 
-import Test from "./Test";
+
 
 export default function Approutes() {
   const [loading, setLoading] = React.useState(true);
@@ -44,7 +44,6 @@ export default function Approutes() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/test" element={<Test />} />
           <Route path="/student/*" element={<Dashboard />}>
             
             <Route path="dashboard" element={<Student_Dashboard_Home />} />
