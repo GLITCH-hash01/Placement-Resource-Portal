@@ -108,7 +108,7 @@ export default function Sidebar({ active = "" }) {
   useEffect(() => {
     if (NavLinks.length > 0) {
       for (let i = 0; i < NavLinks.length; i++) {
-        console.log(NavLinks[i].link, window.location.pathname);
+        // console.log(NavLinks[i].link, window.location.pathname);
         if (window.location.pathname.includes(NavLinks[i].link)) {
           setActiveLink(NavLinks[i].name);
         }

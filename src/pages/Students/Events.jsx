@@ -7,8 +7,8 @@ import { LoadingContext } from "../../ContextStore";
 import { toast } from "react-toastify";
 
 export default function Events() {
-  const internships = [];
   const [events, setEvents] = useState([]);
+  const [internships, setInternships] = useState([]);
   const [loading, setLoading] = useContext(LoadingContext);
 
   useEffect(() => {
@@ -27,6 +27,22 @@ export default function Events() {
         console.log(err);
         setLoading(false);
         toast.error(`Error fetching events ${err.message}`);
+      });
+    axios
+      .get("/events/internships/latest", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data.events);
+        setInternships(res.data.events);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
+        toast.error(`Error fetching internships ${err.message}`);
       });
   }, []);
 
@@ -48,7 +64,12 @@ export default function Events() {
                 desc={event.desc}
                 poster={event.poster_url}
                 onClick={() => {
-                  window.open(event.know_more?event.know_more:"https://www.google.com", "_blank");
+                  window.open(
+                    event.know_more
+                      ? event.know_more
+                      : "https://www.google.com",
+                    "_blank"
+                  );
                 }}
                 isPoster={true}
               />
@@ -65,17 +86,25 @@ export default function Events() {
         </div>
 
         <div className="flex gap-5  w-full h-fit items-center justify-start">
-          {internships.length === 0 ? (
+          {internships?.length === 0 ? (
             <div className="text-center w-full h-full text-2xl font-bold text-gray-400">
               No internships available
             </div>
           ) : (
-            internships.map((internship, index) => (
+            internships?.map((internship, index) => (
               <EventCard
                 key={index}
                 title={internship.title}
                 desc={internship.desc}
-                poster={internship.poster}
+                poster={internship.poster_url}
+                onClick={() =>
+                  window.open(
+                    internship.know_more.startsWith("http")
+                      ? internship.know_more
+                      : "https://" + internship.know_more,
+                    "_blank"
+                  )
+                }
                 isPoster={true}
               />
             ))

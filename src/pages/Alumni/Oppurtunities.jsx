@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 import Heading from "../../components/Heading";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { FaFolder } from "react-icons/fa";
+import { FaFolder, FaLink } from "react-icons/fa";
+import { LoadingContext } from "../../ContextStore";
 
 export default function Oppurtunities() {
   const [oppurtunityWindow, setoppurtunityWindow] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [oppurtunities, setOppurtunities] = useState([]);
+  const [isInternship, setIsInternship] = useState(false);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   const title = useRef();
-  const description = useRef();
+  const know_more = useRef();
 
   function fetchOppurtunities() {
     const access_token = localStorage.getItem("token");
@@ -23,8 +26,8 @@ export default function Oppurtunities() {
         },
       })
       .then((res) => {
-        console.log(res.data.events);
         setOppurtunities(res.data.events);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
@@ -40,8 +43,10 @@ export default function Oppurtunities() {
 
     const formData = new FormData();
     formData.append("title", title.current.value);
-    formData.append("desc", description.current.value);
+
     formData.append("poster", selectedFile);
+    formData.append("category", isInternship ? "internship" : "event");
+    formData.append("know_more", know_more.current.value);
 
     axios
       .post("/events/upload", formData, {
@@ -80,11 +85,23 @@ export default function Oppurtunities() {
               <a href={oppurtunity.poster_url} className="hover:underline">
                 {oppurtunity.title}
               </a>
-              <p>{oppurtunity.desc}</p>
+              <a
+                href={
+                  oppurtunity?.know_more?.startsWith("http")
+                    ? oppurtunity.know_more
+                    : `https://${oppurtunity.know_more}`
+                }
+                target="_blank"
+                className="hover:underline text-ellipsis flex gap-1 items-center ">
+                <FaLink />
+                {oppurtunity.know_more}
+              </a>
             </div>
           ))
         ) : (
-          <p className="text-primary ">You haven't uploaded any oppurtunities yet </p>
+          <p className="text-primary ">
+            You haven't uploaded any oppurtunities yet{" "}
+          </p>
         )}
       </div>
       {oppurtunityWindow && (
@@ -102,11 +119,22 @@ export default function Oppurtunities() {
                 placeholder="Title"
                 className="border-b-2 border-primary outline-0 "
               />
-              <textarea
-                ref={description}
-                placeholder="Description"
+              <input
+                ref={know_more}
+                type="text"
+                placeholder="Link"
                 className="border-b-2 border-primary outline-0 "
               />
+              <div className="flex items-center w-full   gap-3">
+                <input
+                  value={isInternship}
+                  onChange={(e) => setIsInternship(e.target.checked)}
+                  type="checkbox"
+                  placeholder="Title"
+                  className="border-b-2 border-primary cursor-pointer outline-0 "
+                />
+                <span>is this for an internship oppurtunity?</span>
+              </div>
 
               <input
                 onChange={(e) => setSelectedFile(e.target.files[0])}

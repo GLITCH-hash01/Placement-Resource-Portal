@@ -77,15 +77,19 @@ export default function Query() {
       </div>
       <div className="flex w-full  h-full flex-col gap-5 ">
         <h3 className="text-xl font-semibold">Your Questions</h3>
-        <div className="w-full h-fit overflow-y-auto flex flex-col gap-5">
-          {queries.map((query, index) => (
-            <QueryCard
-              desc={query.query_desc}
-              response_count={query.responses.length}
-              key={index}
-              onClick={() => funcOnClick(query.query_id)}
-            />
-          ))}
+        <div className="flex w-full h-full max-h-[73%] overflow-y-scroll">
+          <div className="w-full h-fit  flex flex-col gap-5">
+            {queries.map((query, index) => (
+              <QueryCard
+                desc={query.query_desc}
+                response_count={query.responses.length}
+                author={query.submitted_by}
+                timestamp={query.submitted_on}
+                key={index}
+                onClick={() => funcOnClick(query.query_id)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Heading from "../../../components/Heading";
 import { IoCompassOutline } from "react-icons/io5";
 import { FaCalendarCheck } from "react-icons/fa";
@@ -6,8 +6,10 @@ import { PiStudentBold } from "react-icons/pi";
 import { MdOutlineWorkHistory } from "react-icons/md";
 import { IoArrowForwardCircle } from "react-icons/io5";
 import axios from "axios";
+import { LoadingContext } from "../../../ContextStore";
 
 export default function Roadmaps() {
+  const [loading, setLoading] = useContext(LoadingContext);
   const [data, setData] = useState([
     {
       year: "",
@@ -20,10 +22,14 @@ export default function Roadmaps() {
     const user = JSON.parse(localStorage.getItem("user"));
     setDep(user.department);
     axios
-      .get(`/roadmaps/get/${user.department}`)
+      .get(`/roadmaps/get/${user.department}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
-        console.log(res.data.roadmaps);
         setData(res.data.roadmaps);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);

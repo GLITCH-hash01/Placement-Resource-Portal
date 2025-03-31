@@ -78,6 +78,7 @@ export default function Notes() {
         },
       })
       .then((res) => {
+        console.log(res.data.courses);
         setCourseList(res.data.courses);
         setLoading(false);
       })
@@ -128,6 +129,14 @@ export default function Notes() {
           </div>
           <div className="flex gap-5 mb-8 bg-four p-12 rounded-3xl ">
             <div className="flex gap-5 overflow-x-auto custom-scrollbar">
+              {Array.isArray(courseList) && courseList.length === 0 && (
+                <div className="flex flex-col justify-center items-center w-full h-full">
+                  <h1 className="text-xl font-primary  text-center">
+                    No Notes available for this semester yet. Please check back
+                    later.
+                  </h1>
+                </div>
+              )}
               {Array.isArray(courseList) &&
                 courseList.map((course, index) => (
                   <Card

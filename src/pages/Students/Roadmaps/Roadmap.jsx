@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import roadmapimg from "../../../assets/images/roadmapimg.png";
 import iconroad from "../../../assets/images/iconroad.png";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { useParams } from "react-router-dom";
+import { LoadingContext } from "../../../ContextStore";
 import axios from "axios";
 
 export default function Roadmap() {
+  const [loading, setLoading] = useContext(LoadingContext);
   const { dep, year } = useParams();
   const [roadmap, setRoadmap] = useState({
     roadmap: {
@@ -17,10 +19,15 @@ export default function Roadmap() {
 
   useEffect(() => {
     axios
-      .get(`/roadmaps/get/${dep}?year=${year}`)
+      .get(`/roadmaps/get/${dep}?year=${year}`,{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
       .then((res) => {
         console.log(res.data);
         setRoadmap(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);

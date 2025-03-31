@@ -9,7 +9,6 @@ import Query from "./pages/Query";
 import Profile from "./pages/Profile";
 import Event from "./pages/Event";
 
-
 import Student_Dashboard_Home from "./pages/Students/Home";
 import Student_Roadmaps_Home from "./pages/Students/Roadmaps/Roadmaps";
 import Student_Roadmaps_Roadmap from "./pages/Students/Roadmaps/Roadmap";
@@ -23,7 +22,6 @@ import Faculty_Dashboard_Home from "./pages/Faculty/Home";
 import Faculty_Dashboard_Notes from "./pages/Faculty/Notes";
 import Faculty_Dashboard_Queries from "./pages/Faculty/Queries";
 
-import Alumni_Dashboard from "./pages/Alumni/Dashboard";
 import Alumni_Dashboard_Home from "./pages/Alumni/Home";
 import Alumni_Dashboard_Events from "./pages/Alumni/Oppurtunities";
 import Alumni_Dashboard_Queries from "./pages/Alumni/Queries";
@@ -31,15 +29,14 @@ import Alumni_Dashboard_Queries from "./pages/Alumni/Queries";
 import Tpc_Dashboard from "./pages/TPC/Home";
 import Tpc_Dashboard_Notes from "./pages/TPC/Notes";
 import Tpc_Dashboard_Roadmaps from "./pages/TPC/Roadmaps";
+import Tpc_Dashboard_Roadmaps_Dep from "./pages/TPC/Roadmaps/Roadmap_dep";
+import Tpc_Dashboard_Roadmaps_Year from "./pages/TPC/Roadmaps/Roadmap_year";
+
+import Test from "./Test";
 
 export default function Approutes() {
   const [loading, setLoading] = React.useState(true);
 
-  // React.useEffect(() => {
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
-  // }, []);
   return (
     <BrowserRouter>
       <LoadingContext.Provider value={[loading, setLoading]}>
@@ -47,7 +44,9 @@ export default function Approutes() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/test" element={<Test />} />
           <Route path="/student/*" element={<Dashboard />}>
+            
             <Route path="dashboard" element={<Student_Dashboard_Home />} />
             <Route path="roadmaps" element={<Student_Roadmaps_Home />} />
             <Route
@@ -78,6 +77,14 @@ export default function Approutes() {
             <Route path="dashboard" element={<Tpc_Dashboard />} />
             <Route path="notes" element={<Tpc_Dashboard_Notes />} />
             <Route path="roadmaps" element={<Tpc_Dashboard_Roadmaps />} />
+            <Route
+              path="roadmaps/:dep"
+              element={<Tpc_Dashboard_Roadmaps_Dep />}
+            />
+            <Route
+              path="roadmaps/:dep/:year"
+              element={<Tpc_Dashboard_Roadmaps_Year />}
+            />
           </Route>
         </Routes>
       </LoadingContext.Provider>
