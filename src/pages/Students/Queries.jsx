@@ -61,7 +61,7 @@ export default function Query() {
   };
 
   return (
-    <div className="flex w-full h-full flex-col gap-5 overflow-hidden">
+    <div className="flex w-full h-full bg-white p-3 rounded-md flex-col gap-5 overflow-hidden">
       <div className="flex gap-5 justify-between relative">
         <textarea
           name=""
@@ -79,11 +79,16 @@ export default function Query() {
         <h3 className="text-xl font-semibold">Your Questions</h3>
         <div className="flex w-full h-full max-h-[73%] overflow-y-scroll">
           <div className="w-full h-fit  flex flex-col gap-5">
+            {queries.length === 0 && (
+              <div className="w-full h-full flex items-center justify-center">
+                <h3 className="text-xl font-semibold">No Queries Found</h3>
+              </div>
+            )}
             {queries.map((query, index) => (
               <QueryCard
                 desc={query.query_desc}
                 response_count={query.responses.length}
-                author={query.submitted_by}
+                author={query.submitted_by.username}
                 timestamp={query.submitted_on}
                 key={index}
                 onClick={() => funcOnClick(query.query_id)}

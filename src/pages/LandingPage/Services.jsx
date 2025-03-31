@@ -25,6 +25,7 @@ export default function Services() {
             text={"text-black"}
             colortext={"text-black"}
             text1={"bg-primary"}
+            desc={"A dashboard containing quick links to all the services"}
           />
           <ServiceCard
             color={"bg-black"}
@@ -33,6 +34,7 @@ export default function Services() {
             text={"text-white"}
             colortext={"text-primary"}
             text1={"bg-white"}
+            desc={"An academic portal containing all the academic and placement resources"}
           />
           <ServiceCard
             color={"bg-black"}
@@ -41,6 +43,7 @@ export default function Services() {
             text={"text-white"}
             colortext={"text-primary"}
             text1={"bg-white"}
+            desc={"A roadmap to help you plan your career and academics for each year "}
           />
           <ServiceCard
             color={"bg-white"}
@@ -49,6 +52,7 @@ export default function Services() {
             text={"text-black"}
             colortext={"text-black"}
             text1={"bg-primary"}
+            desc={"A portal containing all the events happening in and off campus"}
           />
         </div>
       </div>

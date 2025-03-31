@@ -1,11 +1,16 @@
 import React from "react";
-import Heading from "../../components/Heading";
-import Card from "../../components/Card";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+
+import Card from "../../components/Card";
+import { LoadingContext } from "../../ContextStore";
+import Heading from "../../components/Heading";
+import { toast } from "react-toastify";
 
 export default function Home() {
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useContext(LoadingContext);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
@@ -15,11 +20,14 @@ export default function Home() {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setNotes(res.data.notes);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        toast.error(`Error fetching notes: ${err.message}`);
       });
   }, []);
   return (
@@ -29,17 +37,17 @@ export default function Home() {
         style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <div className="flex justify-between items-center mb-10">
           <Heading>Notes</Heading>
-          {/* <button
-                className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"
-                style={{ boxShadow: "0px 4px 5px 2px rgba(0, 0, 0, 0.2)" }}>
-                View All
-              </button> */}
         </div>
 
         <div className="flex px-5 gap-5 w-full h-fit items-start justify-start">
           <div className="overflow-x-auto custom-scrollbar flex gap-5">
             {notes.map((note, index) => (
-              <Card key={index} title={note.title} desc={note.name} onClick={()=>window.location.href=note.doc_url} />
+              <Card
+                key={index}
+                title={note.title}
+                desc={note.name}
+                onClick={() => (window.location.href = note.doc_url)}
+              />
             ))}
           </div>
         </div>

@@ -1,10 +1,14 @@
 import React from "react";
-import QueryCard from "../../components/QueryCard";
 import axios from "axios";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { toast } from "react-toastify";
+
+import { LoadingContext } from "../../ContextStore";
+import QueryCard from "../../components/QueryCard";
 
 export default function Query() {
   const queryRef = useRef(null);
+  const [loading, setLoading] = useContext(LoadingContext);
   const [queries, setQueries] = useState([]);
 
   const funcOnClick = (id) => {
@@ -20,11 +24,13 @@ export default function Query() {
         },
       })
       .then((res) => {
-        console.log(res.data);
         setQueries(res.data.queries);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        toast.error(`Error fetching queries: ${err.message}`);
       });
   };
   useEffect(() => {
@@ -57,7 +63,7 @@ export default function Query() {
   };
 
   return (
-    <div className="flex w-full h-full flex-col gap-5 overflow-hidden">
+    <div className="flex w-full h-full flex-col gap-5 overflow-hidden bg-white p-3 rounded-md shadow-md border">
       <div className="flex gap-5 justify-between relative">
         <textarea
           name=""
@@ -71,15 +77,18 @@ export default function Query() {
           Post Query
         </button>
       </div>
-      <div className="flex w-full  h-full flex-col gap-5 ">
+      <div className="flex w-full max-h-[73%]  h-full flex-col gap-5 ">
         <h3 className="text-xl font-semibold">Questions</h3>
         <div className="w-full h-fit overflow-y-auto flex flex-col gap-5">
           {queries.map((query, index) => (
             <QueryCard
               desc={query.query_desc}
               response_count={query.responses.length}
+              timestamp={query.submitted_on}
+              author={query.submitted_by.username}
+              authortype={query.submitted_by.role}
               key={index}
-              onClick={()=>funcOnClick(query.query_id)}
+              onClick={() => funcOnClick(query.query_id)}
             />
           ))}
         </div>

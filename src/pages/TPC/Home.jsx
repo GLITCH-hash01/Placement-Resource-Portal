@@ -29,8 +29,6 @@ export default function Home() {
         toast.error(`Error fetching courses ${err.message}`);
       });
 
-
-
     axios
       .get("/events/internships/latest", {
         headers: {
@@ -109,7 +107,9 @@ export default function Home() {
                   poster={event.poster_url}
                   onClick={() =>
                     (window.location.href = event.know_more
-                      ? event.know_more
+                      ? event.know_more.startsWith("http")
+                        ? event.know_more
+                        : "http://" + event.know_more
                       : "https://www.google.com")
                   }
                   isPoster={true}

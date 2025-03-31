@@ -51,9 +51,9 @@ export default function Home() {
                   key={index}
                   title={event.title}
                   desc={event.desc}
-                  poster={event.poster}
+                  poster={event.poster_url}
                   onClick={() => {
-                    window.open(event.know_more, "_blank");
+                    window.open(event.know_more.startsWith("http")?event.know_more:"http://"+event.know_more, "_blank");
                   }}
                   isPoster={true}
                 />

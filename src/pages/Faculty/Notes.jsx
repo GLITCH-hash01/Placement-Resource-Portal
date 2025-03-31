@@ -1,15 +1,18 @@
-import React, { useEffect } from "react";
-import Heading from "../../components/Heading";
-import { useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 import { FaFolder } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
+
+import Heading from "../../components/Heading";
+import { LoadingContext } from "../../ContextStore";
 
 export default function Notes() {
   const [noteWindow, setNoteWindow] = useState(false);
   const [notes, setNotes] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useContext(LoadingContext);
 
   const module = useRef();
   const courseCode = useRef();
@@ -17,9 +20,29 @@ export default function Notes() {
   const semester = useRef();
   const scheme = useRef();
 
+  function deleteNote(id) {
+    const access_token = localStorage.getItem("token");
+    if (access_token === null) {
+      window.location.href = "/login";
+    }
+    axios
+      .delete(`/notes/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        fetchNotes();
+      })
+      .catch((err) => {
+        toast.error(err.response.message);
+        console.log(err);
+      });
+  }
+
   function fetchNotes() {
     const access_token = localStorage.getItem("token");
-    console.log(access_token);
     axios
       .get("/notes/me/get", {
         headers: {
@@ -28,11 +51,13 @@ export default function Notes() {
         },
       })
       .then((res) => {
-        console.log(res.data.notes);
         setNotes(res.data.notes);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        toast.error(`Error fetching notes: ${err.message}`);
       });
   }
 
@@ -47,7 +72,6 @@ export default function Notes() {
     const formData = new FormData();
     formData.append("module", module.current.value);
     formData.append("course_code", courseCode.current.value);
-    formData.append("year", year.current.value);
     formData.append("semester", semester.current.value);
     formData.append("note", selectedFile);
     formData.append("scheme", scheme.current.value);
@@ -86,11 +110,21 @@ export default function Notes() {
             <div
               className="flex justify-between w-full items-center border-b py-2 border-primary h-fit px-5"
               key={index}>
-              <FaFolder  />
+              <FaFolder />
               <a href={note.doc_url} className="hover:underline">
                 {note.title}
               </a>
-              <p>{note.submitted_on}</p>
+              <div className="flex gap-4 items-center cursor-pointer">
+                <a
+                  onClick={() => {
+                    deleteNote(note.id);
+                  }}
+                  className="hover:text-red-500 flex gap-1 items-center ">
+                  <MdDeleteOutline />
+                </a>
+                <span className="text-gray-400">|</span>
+                <p>{note.submitted_on}</p>
+              </div>
             </div>
           ))
         ) : (
@@ -116,12 +150,6 @@ export default function Notes() {
                 type="text"
                 ref={courseCode}
                 placeholder="Course Code"
-                className="border-b-2 border-primary outline-0 "
-              />
-              <input
-                type="text"
-                ref={year}
-                placeholder="Year"
                 className="border-b-2 border-primary outline-0 "
               />
               <input

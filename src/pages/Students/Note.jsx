@@ -7,9 +7,31 @@ import { LoadingContext } from "../../ContextStore";
 import { toast } from "react-toastify";
 
 export default function Note() {
-  const { course } = useParams();
+  const { course, sem } = useParams();
   const [Modules, setModules] = useState([]);
   const [loading, setLoading] = useContext(LoadingContext);
+
+  const fetchNote = (mod) => {
+    const token = localStorage.getItem("token");
+    const user = localStorage.getItem("user");
+    const user_data = JSON.parse(user);
+    console.log(`/notes/${user_data.dep}/2019/${sem}/${course}/${mod}`);
+    axios
+      .get(`/notes/${user_data.department}/2019/${sem}/${course}/${mod}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        window.open(res.data.doc_url, "_blank");
+      })
+      .catch((err) => {
+        console.log(err);
+
+        toast.error(`Error fetching notes ${err.message}`);
+      });
+  };
 
   useEffect(() => {
     axios
@@ -46,7 +68,14 @@ export default function Note() {
                 </div>
               ) : (
                 Modules.map((module, index) => (
-                  <Card key={index} title={`Module ${module}`} desc={""} />
+                  <Card
+                    key={index}
+                    title={`Module ${module}`}
+                    desc={""}
+                    onClick={() => {
+                      fetchNote(module);
+                    }}
+                  />
                 ))
               )}
             </div>

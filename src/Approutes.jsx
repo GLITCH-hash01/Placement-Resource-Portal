@@ -54,7 +54,7 @@ export default function Approutes() {
               element={<Student_Roadmaps_Roadmap />}
             />
             <Route path="notes" element={<Student_Notes />} />
-            <Route path="notes/:course" element={<Student_Notes_Note />} />
+            <Route path="notes/:sem/:course" element={<Student_Notes_Note />} />
             <Route path="events" element={<Student_Events />} />
             <Route path="query" element={<Student_Queries />} />
             <Route path="query/:id" element={<Query />} />

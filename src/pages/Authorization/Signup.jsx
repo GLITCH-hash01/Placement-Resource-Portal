@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { toast } from "react-toastify";
 import Button from "../../components/Button";
 import logo from "../../assets/PRPLogo.png";
@@ -13,6 +13,16 @@ export default function Signup() {
   const department = useRef();
   const username = useRef();
   const confirmpass = useRef();
+  const role = useRef();
+
+  function alumnialert() {
+    if (role.current.value === "alumni") {
+      toast.info(
+        "Make sure to give email address given to college for alumni registration."
+      );
+      return;
+    }
+  }
 
   function Login() {
     event.preventDefault();
@@ -33,13 +43,14 @@ export default function Signup() {
         password: password.current.value,
         username: username.current.value,
         department: department.current.value,
-        role: "student",
+        role: role.current.value,
       })
       .then((res) => {
+        console.log(res.data);
         toast.success(res.data.message);
-        localStorage.setItem("token", res.data.accesstoken);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-        setTimeout(() => (window.location.href = "/students/dashboard"), 2000);
+        localStorage.setItem("token", res.data.data.access_token);
+        localStorage.setItem("user", JSON.stringify(res.data.data.user));
+        setTimeout(() => (window.location.href = `/${role.current.value}/dashboard`), 2000);
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -59,7 +70,7 @@ export default function Signup() {
           <img src={leftimage} alt=" " className="w-[300px] h-auto" />
         </div>
         <div
-          className="w-100 h-150 py-16  bg-black rounded-xl z-10 relative"
+          className="w-100 h-fit py-8  bg-black rounded-xl z-10 relative"
           style={{ boxShadow: "5px 5px 0px 0px #9B9BFF" }}>
           <img
             src={arrow}
@@ -77,7 +88,7 @@ export default function Signup() {
           <p className=" text-white px-10 pb-10 font-[400] text-xl text-center">
             Hey, Enter your details to Register
           </p>
-          <form className=" flex flex-col gap-4 px-10" onSubmit={Login}>
+          <form className=" flex flex-col gap-4 px-10 " onSubmit={Login}>
             <input
               ref={username}
               type="text"
@@ -95,14 +106,43 @@ export default function Signup() {
               placeholder="Email Address"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
             />
-            <input
+            {/* <input
               ref={department}
               type="text"
               id="department"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Department"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}
-            />
+            /> */}
+            <div
+              className="w-80 h-10 overflow-hidden px-3 rounded-3xl bg-white text-black text-md outline-0"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}>
+              <select
+                name=""
+                id=""
+                className="w-full h-full outline-0"
+                ref={department}>
+                <option value="" disabled={true}>
+                  Department
+                </option>
+                <option value="CSE">CSE</option>
+                <option value="ECE">ECE</option>
+                <option value="EEE">EEE</option>
+              </select>
+            </div>
+            <div
+              className="w-80 h-10 overflow-hidden px-3 rounded-3xl bg-white text-black text-md outline-0"
+              style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}>
+              <select
+                name=""
+                id=""
+                className="w-full h-full outline-0"
+                onChange={alumnialert}
+                ref={role}>
+                <option value="student">Student</option>
+                <option value="alumni">Alumni</option>
+              </select>
+            </div>
 
             <input
               ref={password}
@@ -115,7 +155,7 @@ export default function Signup() {
             <input
               ref={confirmpass}
               type="password"
-              id="password"
+              id="confirmpassword"
               className="w-80 h-10 p-4 rounded-3xl bg-white text-black text-md outline-0"
               placeholder="Confirm Password"
               style={{ boxShadow: "3px 3px 0px 0px #9B9BFF" }}

@@ -4,7 +4,7 @@ import profileimg from "../assets/images/profile.png";
 
 export default function QueryCard({
   author,
-  authortype="Student",
+  authortype = "Student",
   timestamp,
   desc,
   response_count,
@@ -38,15 +38,3 @@ export default function QueryCard({
     </div>
   );
 }
-// export default function QueryCard({ desc, response_count, onClick }) {
-//   return (
-//     <div
-//       className="flex flex-col p-4 bg-primary rounded-md cursor-pointer gap-3"
-//       onClick={onClick}>
-//       <p className="text-ellipsis hover:underline ">{desc}</p>
-//       <span className="flex gap-3 items-center">
-//         <FaRegCommentAlt /> {response_count}
-//       </span>
-//     </div>
-//   );
-// }

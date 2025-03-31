@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import Profileimg from "../assets/images/profile.png";
 
+import { capitalizeFirstLetter } from "../ContextStore";
+
 export default function ProfileBar() {
   const [user, setUser] = useState({
     name: "John Doe",
@@ -34,7 +36,7 @@ export default function ProfileBar() {
         <div className="flex text-md flex-col  justify-center">
           <p className="text-lg font-semibold leading-3">{user.name}</p>
           <p className="text-sm leading-5">
-            {user.role},{user.dep}
+            {capitalizeFirstLetter(user.role)},{user.dep}
           </p>
         </div>
         <img src={Profileimg} alt="" className="size-9" />
