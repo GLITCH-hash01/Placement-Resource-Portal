@@ -66,6 +66,7 @@ export default function Query() {
         },
       })
       .then((res) => {
+        console.log(res.data.query);
         setQuery(res.data.query);
         setLoading(false);
       })
@@ -81,18 +82,22 @@ export default function Query() {
       <div className="flex flex-col w-full h-fit gap-3">
         <div className="flex gap-3 items-center">
           <span className="w-10 h-10 bg-primary rounded-full">
-            <img src={profileimg}/>
+            <img src={profileimg} />
           </span>
-          <p className="text-xl font-semibold">{query.submitted_by}</p>
-          <span className="w-2 h-2 rounded-full bg-gray-600"></span>
-          <p className="text-sm">{query.submitted_on}</p>
+          <div className="flex flex-col ">
+            <div className="flex gap-3 items-center">
+              <p className="text-xl font-semibold">{query.submitted_by?.username}</p>
+              <span className="w-2 h-2 rounded-full bg-gray-600"></span>
+              <p className="text-sm">{query.submitted_on}</p>
+            </div>
+            <p className="text-sm">{query.submitted_by?.role}</p>
+          </div>
         </div>
         <p className="text-2xl ">{query.query_desc}</p>
         <div className="flex w-full gap-3 items-center justify-between">
           <span className="flex gap-3 items-center">
             <FaRegCommentAlt /> {query.response_count} Comments
           </span>
-          
         </div>
       </div>
       <div className="flex gap-5 w-full max-h-50 ">
@@ -119,7 +124,8 @@ export default function Query() {
                 desc={response.response}
                 response_count={0}
                 timestamp={response.responded_on}
-                author={response.responded_by}
+                author={response.responded_by.username}
+                authortype={response.responded_by.role}
                 response={false}
               />
             ))

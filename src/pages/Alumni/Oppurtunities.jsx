@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FaFolder, FaLink } from "react-icons/fa";
 import { LoadingContext } from "../../ContextStore";
+import { MdDeleteOutline } from "react-icons/md";
 
 export default function Oppurtunities() {
   const [oppurtunityWindow, setoppurtunityWindow] = useState(false);
@@ -15,6 +16,22 @@ export default function Oppurtunities() {
 
   const title = useRef();
   const know_more = useRef();
+
+  function deleteOppurtunity(id) {
+    axios
+      .delete(`/events/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        fetchOppurtunities();
+      })
+      .catch((err) => {
+        toast.error(err.response.data.message);
+      });
+  }
 
   function fetchOppurtunities() {
     const access_token = localStorage.getItem("token");
@@ -85,17 +102,28 @@ export default function Oppurtunities() {
               <a href={oppurtunity.poster_url} className="hover:underline">
                 {oppurtunity.title}
               </a>
-              <a
-                href={
-                  oppurtunity?.know_more?.startsWith("http")
-                    ? oppurtunity.know_more
-                    : `https://${oppurtunity.know_more}`
-                }
-                target="_blank"
-                className="hover:underline text-ellipsis flex gap-1 items-center ">
-                <FaLink />
-                {oppurtunity.know_more}
-              </a>
+
+              <div className="flex gap-4 items-center cursor-pointer">
+                <a
+                  onClick={() => {
+                    deleteOppurtunity(oppurtunity.id);
+                  }}
+                  className="hover:text-red-500 flex gap-1 items-center ">
+                  <MdDeleteOutline />
+                </a>
+                <span className="text-gray-400">|</span>
+                <a
+                  href={
+                    oppurtunity?.know_more?.startsWith("http")
+                      ? oppurtunity.know_more
+                      : `https://${oppurtunity.know_more}`
+                  }
+                  target="_blank"
+                  className="hover:underline text-ellipsis flex gap-1 items-center ">
+                  <FaLink />
+                  {oppurtunity.know_more}
+                </a>
+              </div>
             </div>
           ))
         ) : (

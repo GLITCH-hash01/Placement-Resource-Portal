@@ -1,28 +1,35 @@
 import React from "react";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+
 import Heading from "../../components/Heading";
 import Card from "../../components/Card";
-import posterimg from "../../assets/images/testposter.jpg";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { LoadingContext } from "../../ContextStore";
 
 export default function Home() {
   const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useContext(LoadingContext);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("/events/latest", {
+      .get("/events/internships/latest", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        console.log(res.data);
         setEvents(res.data.events);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
+        toast.error("Failed to fetch events");
       });
   }, []);
+
   return (
     <div className="p-4 w-full h-full custom-scrollbar flex flex-col gap-8 overflow-y-auto">
       <div
@@ -30,11 +37,6 @@ export default function Home() {
         style={{ boxShadow: "0px 4px 0px 0px #9b9bff" }}>
         <div className="flex justify-between items-center mb-10">
           <Heading>Events</Heading>
-          {/* <button
-                className="px-6 py-2 bg-primary text-xl text-black rounded-xl font-bold hover:bg-opacity-80 transition duration-300 cursor-pointer"
-                style={{ boxShadow: "0px 4px 5px 2px rgba(0, 0, 0, 0.2)" }}>
-                View All
-              </button> */}
         </div>
 
         <div className="flex gap-5 w-full h-fit items-center justify-start">
@@ -50,6 +52,9 @@ export default function Home() {
                   title={event.title}
                   desc={event.desc}
                   poster={event.poster}
+                  onClick={() => {
+                    window.open(event.know_more, "_blank");
+                  }}
                   isPoster={true}
                 />
               ))}

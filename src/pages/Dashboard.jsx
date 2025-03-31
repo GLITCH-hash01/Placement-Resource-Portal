@@ -20,7 +20,7 @@ export default function Dashboard() {
           </div>
           <div className="w-full h-[90%] max-h-[90%] relative">
             {loading && (
-              <div className=" absolute z-10 w-full h-full flex justify-center items-center bg-white">
+              <div className=" absolute z-20 w-full h-full flex justify-center items-center bg-white">
                 <Loader />
               </div>
             )}
